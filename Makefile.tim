@@ -7,16 +7,11 @@ all: \
 	iso/font/cdr.tim \
 	iso/stage/hud0.tim \
 	iso/stage/hud1-1.tim \
-	iso/stage/hud1-2.tim \
-	iso/stage/hud1-3.tim \
-	iso/stage/hud1-4.tim \
-	iso/stage/hud1-5.tim \
-	iso/stage/hud1-6.tim \
 	iso/stage/hud0weeb.tim \
 	iso/stage/pause.tim \
 	iso/bf/main.arc \
 	iso/bf/dead.arc \
-	iso/dad/main.arc \
+	iso/walt/main.arc \
 	iso/gf/main.arc \
 	iso/gf/speaker.tim \
 	iso/week1/back.arc 
@@ -34,9 +29,8 @@ iso/menu/menu.arc: iso/menu/back.tim iso/menu/ng.tim iso/menu/story.tim iso/menu
 iso/bf/main.arc: iso/bf/bf0.tim iso/bf/bf1.tim iso/bf/bf2.tim iso/bf/bf3.tim iso/bf/bf4.tim iso/bf/bf5.tim iso/bf/bf6.tim iso/bf/dead0.tim
 iso/bf/dead.arc: iso/bf/dead1.tim iso/bf/dead2.tim iso/bf/retry.tim
 
-# Dad
-iso/dad/main.arc: iso/dad/idle0.tim iso/dad/idle1.tim iso/dad/left.tim iso/dad/down.tim iso/dad/up.tim iso/dad/right.tim
-
+# Walter 
+iso/walt/main.arc: iso/walt/idle0.tim iso/walt/idle1.tim iso/walt/idle2.tim iso/walt/idle3.tim iso/walt/idle4.tim iso/walt/left0.tim iso/walt/left1.tim iso/walt/left2.tim iso/walt/left3.tim iso/walt/down0.tim iso/walt/down1.tim iso/walt/down2.tim iso/walt/down3.tim iso/walt/up0.tim iso/walt/up1.tim iso/walt/up2.tim iso/walt/up3.tim iso/walt/right0.tim iso/walt/right1.tim iso/walt/right2.tim iso/walt/right3.tim 
 # GF
 iso/gf/main.arc: iso/gf/gf0.tim iso/gf/gf1.tim iso/gf/gf2.tim
 
