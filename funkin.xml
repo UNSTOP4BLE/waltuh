@@ -60,7 +60,7 @@
 				<file name = "bfweeb.arc" type = "data" source = "iso/bf/weeb.arc"/>
 				
 				<!-- Walter assets -->
-				<file name = "walt.arc" type = "data" source = "iso/walt/main.arc"/
+				<file name = "walt.arc" type = "data" source = "iso/walt/main.arc"/>
 
 				<!-- Girlfriend assets -->
 				<file name = "gf.arc" type = "data" source = "iso/gf/main.arc"/>
