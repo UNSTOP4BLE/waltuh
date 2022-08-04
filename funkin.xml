@@ -57,7 +57,6 @@
 				<!-- Boyfriend assets -->
 				<file name = "bf.arc" type = "data" source = "iso/bf/main.arc"/>
 				<file name = "bfdead.arc" type = "data" source = "iso/bf/dead.arc"/>
-				<file name = "bfweeb.arc" type = "data" source = "iso/bf/weeb.arc"/>
 				
 				<!-- Walter assets -->
 				<file name = "walt.arc" type = "data" source = "iso/walt/main.arc"/>
