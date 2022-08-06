@@ -229,23 +229,7 @@ void Char_BF_Tick(Character *character)
 			(stage.song_step & 0x7) == 0)
 			character->set_anim(character, CharAnim_Idle);
 		
-		//Stage specific animations
-		if (stage.note_scroll >= 0)
-		{
-			switch (stage.stage_id)
-			{
-				case StageId_1_4: //Tutorial peace
-					if (stage.song_step > 64 && stage.song_step < 192 && (stage.song_step & 0x3F) == 60)
-						character->set_anim(character, PlayerAnim_Peace);
-					break;
-				case StageId_1_1: //Bopeebo peace
-					if ((stage.song_step & 0x1F) == 28)
-						character->set_anim(character, PlayerAnim_Peace);
-					break;
-				default:
-					break;
-			}
-		}
+		
 	}
 	
 	//Retry screen
@@ -429,33 +413,10 @@ Character *Char_BF_New(fixed_t x, fixed_t y)
 	this->character.health_bar = 0xFF29B5D6;
 	
 	this->character.focus_x = FIXED_DEC(-50,1);
-	this->character.focus_y = (stage.stage_id == StageId_1_4) ? FIXED_DEC(-85,1) : FIXED_DEC(-65,1);
+	this->character.focus_y = FIXED_DEC(-65,1);
 	this->character.focus_zoom = FIXED_DEC(1,1);
 	
 	//Load art
-	if (stage.stage_id >= StageId_5_1 && stage.stage_id <= StageId_5_3)
-	{
-		this->arc_main = IO_Read("\\CHAR\\XMASBF.ARC;1");
-		this->arc_dead = NULL;
-		IO_FindFile(&this->file_dead_arc, "\\CHAR\\BFDEAD.ARC;1");
-		
-		const char **pathp = (const char *[]){
-			"xmasbf0.tim",   //BF_ArcMain_BF0
-			"xmasbf1.tim",   //BF_ArcMain_BF1
-			"xmasbf2.tim",   //BF_ArcMain_BF2
-			"xmasbf3.tim",   //BF_ArcMain_BF3
-			"xmasbf3.tim",   //BF_ArcMain_BF4
-			"xmasbf4.tim",   //BF_ArcMain_BF5
-			"xmasbf5.tim",   //BF_ArcMain_BF6
-			"dead0.tim", //BF_ArcMain_Dead0
-			NULL
-		};
-		IO_Data *arc_ptr = this->arc_ptr;
-		for (; *pathp != NULL; pathp++)
-			*arc_ptr++ = Archive_Find(this->arc_main, *pathp);
-	}
-	else
-	{
 		this->arc_main = IO_Read("\\CHAR\\BF.ARC;1");
 		this->arc_dead = NULL;
 		IO_FindFile(&this->file_dead_arc, "\\CHAR\\BFDEAD.ARC;1");
@@ -474,7 +435,6 @@ Character *Char_BF_New(fixed_t x, fixed_t y)
 		IO_Data *arc_ptr = this->arc_ptr;
 		for (; *pathp != NULL; pathp++)
 			*arc_ptr++ = Archive_Find(this->arc_main, *pathp);
-	}
 	//Initialize render state
 	this->tex_id = this->frame = 0xFF;
 	

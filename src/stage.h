@@ -42,11 +42,11 @@
 typedef enum
 {
 	StageId_1_1, //Bopeebo
-	
+
 	StageId_Max
 } StageId;
 
-#define StageId_LastVanilla StageId_6_3
+#define StageId_LastVanilla StageId_1_1
 
 typedef enum
 {
