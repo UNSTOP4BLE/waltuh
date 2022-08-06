@@ -53,7 +53,6 @@ char iconpath[30];
 #include "character/gf.h"
 
 #include "stage/week1.h"
-
 static const StageDef stage_defs[StageId_Max] = {
 	#include "stagedef_disc1.h"
 };
@@ -124,13 +123,6 @@ static void Stage_ScrollCamera(void)
 			stage.camera.x += FIXED_MUL(dx, stage.camera.td);
 			stage.camera.y += FIXED_MUL(dy, stage.camera.td);
 			stage.camera.zoom += FIXED_MUL(dz, stage.camera.td);
-			
-			//Shake in Week 4
-			if (stage.stage_id >= StageId_4_1 && stage.stage_id <= StageId_4_3)
-			{
-				stage.camera.x += RandomRange(FIXED_DEC(-1,10),FIXED_DEC(1,10));
-				stage.camera.y += RandomRange(FIXED_DEC(-25,100),FIXED_DEC(25,100));
-			}
 		}
 	}
 		
@@ -406,16 +398,10 @@ static void Stage_SustainCheck(PlayerState *this, u8 type)
 
 static void CheckNewScore()
 {
-	if (stage.mode == StageMode_Normal && !stage.prefs.botplay)
+	if (stage.mode == StageMode_Normal && !stage.prefs.botplay && timer.timermin == 0 && timer.timer <= 5)
 	{
-		if (stage.stage_id == StageId_4_4 && stage.player_state[0].score >= stage.prefs.specialscore[1])
-			stage.prefs.specialscore[1] = stage.player_state[0].score;
-
-		else if (stage.stage_id == StageId_1_4 && stage.player_state[0].score >= stage.prefs.specialscore[0])
-			stage.prefs.specialscore[0] = stage.player_state[0].score;
-		
-		else if (stage.player_state[0].score >= stage.prefs.savescore[stage.stage_def->week - 1][stage.stage_def->week_song - 1])
-			stage.prefs.savescore[stage.stage_def->week - 1][stage.stage_def->week_song - 1] = stage.player_state[0].score;			
+		if (stage.player_state[0].score >= stage.prefs.savescore[stage.stage_id][stage.stage_diff])
+			stage.prefs.savescore[stage.stage_id][stage.stage_diff] = stage.player_state[0].score;			
 	}
 }
 
@@ -527,48 +513,14 @@ void Stage_DrawTexCol(Gfx_Tex *tex, const RECT *src, const RECT_FIXED *dst, fixe
 	fixed_t wz = dst->w;
 	fixed_t hz = dst->h;
 	
-	if (stage.stage_id >= StageId_6_1 && stage.stage_id <= StageId_6_3)
+	//Don't draw if HUD and is disabled
+	if (tex == &stage.tex_hud0 || tex == &stage.tex_hud1)
 	{
-		//Handle HUD drawing
-		if (tex == &stage.tex_hud0)
-		{
-			#ifdef STAGE_NOHUD
-				return;
-			#endif
-			if (src->y >= 128 && src->y < 224)
-			{
-				//Pixel perfect scrolling
-				xz &= FIXED_UAND;
-				yz &= FIXED_UAND;
-				wz &= FIXED_UAND;
-				hz &= FIXED_UAND;
-			}
-		}
-		else if (tex == &stage.tex_hud1)
-		{
-			#ifdef STAGE_NOHUD
-				return;
-			#endif
-		}
-		else
-		{
-			//Pixel perfect scrolling
-			xz &= FIXED_UAND;
-			yz &= FIXED_UAND;
-			wz &= FIXED_UAND;
-			hz &= FIXED_UAND;
-		}
+		#ifdef STAGE_NOHUD
+			return;
+		#endif
 	}
-	else
-	{
-		//Don't draw if HUD and is disabled
-		if (tex == &stage.tex_hud0 || tex == &stage.tex_hud1)
-		{
-			#ifdef STAGE_NOHUD
-				return;
-			#endif
-		}
-	}
+	
 	
 	fixed_t l = (screen.SCREEN_WIDTH2  << FIXED_SHIFT) + FIXED_MUL(xz, zoom);// + FIXED_DEC(1,2);
 	fixed_t t = (screen.SCREEN_HEIGHT2 << FIXED_SHIFT) + FIXED_MUL(yz, zoom);// + FIXED_DEC(1,2);
@@ -1320,10 +1272,10 @@ static void Stage_LoadSFX(void)
 	CdlFILE file;
 
 	//intro sound
-		for (u8 i = 0; i < 4;i++)
-		{
+	for (u8 i = 0; i < 4;i++)
+	{
 		char text[0x80];
-		sprintf(text, "\\SOUNDS\\INTRO%d%s.VAG;1", i, (stage.stage_id >= StageId_6_1 && stage.stage_id <= StageId_6_3) ?"P" :"");
+		sprintf(text, "\\SOUNDS\\INTRO%d%s.VAG;1", i, (stage.stage_id >= StageId_6_1 && stage.stage_id <= StageId_6_3) ? "P" : "");
 	  	IO_FindFile(&file, text);
 	    u32 *data = IO_ReadFile(&file);
 	    Sounds[i] = Audio_LoadVAGData(data, file.size);
@@ -1335,14 +1287,14 @@ static void Stage_LoadSFX(void)
 	{
 		for (u8 i = 0; i < 3;i++)
 		{
-		char text[0x80];
-		sprintf(text, "\\SOUNDS\\MISS%d.VAG;1", i + 1);
-	  	IO_FindFile(&file, text);
-	    u32 *data = IO_ReadFile(&file);
-	    Sounds[i + 4] = Audio_LoadVAGData(data, file.size);
-	    Mem_Free(data);
-	}
-  }
+			char text[0x80];
+			sprintf(text, "\\SOUNDS\\MISS%d.VAG;1", i + 1);
+		  	IO_FindFile(&file, text);
+		    u32 *data = IO_ReadFile(&file);
+		    Sounds[i + 4] = Audio_LoadVAGData(data, file.size);
+		    Mem_Free(data);
+		}
+    }
 }
 
 static void Stage_LoadMusic(void)
@@ -1376,8 +1328,6 @@ static void Stage_LoadMusic(void)
 
 static void Stage_LoadState(void)
 {
-
-	writeSaveFile();
 	//Initialize stage state
 	stage.flag = STAGE_FLAG_VOCAL_ACTIVE;
 	
@@ -1565,6 +1515,8 @@ void Stage_Unload(void)
 static boolean Stage_NextLoad(void)
 {
 	CheckNewScore();
+	writeSaveFile();
+
 	u8 load = stage.stage_def->next_load;
 	if (load == 0)
 	{
@@ -1717,8 +1669,8 @@ void Stage_Tick(void)
 				StageTimer_Draw();
 			if (stage.prefs.debug)
 				Debug_StageDebug();
-			
-			FntPrint("step %d, beat %d", stage.song_step, stage.song_beat);
+
+			//FntPrint("step %d, beat %d", stage.song_step, stage.song_beat);
 
 			Stage_CountDown();
 
