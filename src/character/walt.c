@@ -16,10 +16,25 @@ enum
 {
 	walt_ArcMain_Idle0,
 	walt_ArcMain_Idle1,
-	walt_ArcMain_Left,
-	walt_ArcMain_Down,
-	walt_ArcMain_Up,
-	walt_ArcMain_Right,
+	walt_ArcMain_Idle2,
+	walt_ArcMain_Idle3,
+	walt_ArcMain_Idle4,
+	walt_ArcMain_Left0,
+	walt_ArcMain_Left1,
+	walt_ArcMain_Left2,
+	walt_ArcMain_Left3,
+	walt_ArcMain_Down0,
+	walt_ArcMain_Down1,
+	walt_ArcMain_Down2,
+	walt_ArcMain_Down3,
+	walt_ArcMain_Up0,
+	walt_ArcMain_Up1,
+	walt_ArcMain_Up2,
+	walt_ArcMain_Up3,
+	walt_ArcMain_Right0,
+	walt_ArcMain_Right1,
+	walt_ArcMain_Right2,
+	walt_ArcMain_Right3,
 	
 	walt_Arc_Max,
 };
@@ -39,33 +54,42 @@ typedef struct
 
 //walt character definitions
 static const CharFrame char_walt_frame[] = {
-	{walt_ArcMain_Idle0, {  0,   0, 106, 192}, { 42, 183+4}}, //0 idle 1
-	{walt_ArcMain_Idle0, {107,   0, 108, 190}, { 43, 181+4}}, //1 idle 2
-	{walt_ArcMain_Idle1, {  0,   0, 107, 190}, { 42, 181+4}}, //2 idle 3
-	{walt_ArcMain_Idle1, {108,   0, 105, 192}, { 41, 183+4}}, //3 idle 4
-	
-	{walt_ArcMain_Left, {  0,   0,  93, 195}, { 40, 185+4}}, //4 left 1
-	{walt_ArcMain_Left, { 94,   0,  95, 195}, { 40, 185+4}}, //5 left 2
-	
-	{walt_ArcMain_Down, {  0,   0, 118, 183}, { 43, 174+4}}, //6 down 1
-	{walt_ArcMain_Down, {119,   0, 117, 183}, { 43, 175+4}}, //7 down 2
-	
-	{walt_ArcMain_Up, {  0,   0, 102, 205}, { 40, 196+4}}, //8 up 1
-	{walt_ArcMain_Up, {103,   0, 103, 203}, { 40, 194+4}}, //9 up 2
-	
-	{walt_ArcMain_Right, {  0,   0, 117, 199}, { 43, 189+4}}, //10 right 1
-	{walt_ArcMain_Right, {118,   0, 114, 199}, { 42, 189+4}}, //11 right 2
+	{walt_ArcMain_Idle0, {  0,   0, 172, 194}, {  0,   0}},
+	{walt_ArcMain_Idle1, {  0,   0, 172, 196}, {  0,   0}},
+	{walt_ArcMain_Idle2, {  0,   0, 172, 197}, {  0,   0}},
+	{walt_ArcMain_Idle3, {  0,   0, 168, 195}, {  0,   0}},
+	{walt_ArcMain_Idle4, {  0,   0, 172, 195}, {  0,   0}},
+
+	{walt_ArcMain_Left0, {  0,   0, 172, 193}, {  0,   0}},
+	{walt_ArcMain_Left1, {  0,   0, 172, 194}, {  0,   0}},
+	{walt_ArcMain_Left2, {  0,   0, 172, 195}, {  0,   0}},
+	{walt_ArcMain_Left3, {  0,   0, 172, 195}, {  0,   0}},
+
+	{walt_ArcMain_Down0, {  0,   0, 176, 181}, {  0,   0}},
+	{walt_ArcMain_Down1, {  0,   0, 176, 187}, {  0,   0}},
+	{walt_ArcMain_Down2, {  0,   0, 172, 192}, {  0,   0}},
+	{walt_ArcMain_Down3, {  0,   0, 168, 195}, {  0,   0}},
+
+	{walt_ArcMain_Up0, {  0,   0, 164, 202}, {  0,   0}},
+	{walt_ArcMain_Up1, {  0,   0, 164, 199}, {  0,   0}},
+	{walt_ArcMain_Up2, {  0,   0, 168, 197}, {  0,   0}},
+	{walt_ArcMain_Up3, {  0,   0, 172, 195}, {  0,   0}},
+
+	{walt_ArcMain_Idle0, {  0,   0, 172, 192}, {  0,   0}},
+	{walt_ArcMain_Idle0, {  0,   0, 172, 194}, {  0,   0}},
+	{walt_ArcMain_Idle0, {  0,   0, 172, 195}, {  0,   0}},
+	{walt_ArcMain_Idle0, {  0,   0, 172, 195}, {  0,   0}},
 };
 
 static const Animation char_walt_anim[CharAnim_Max] = {
-	{2, (const u8[]){ 1,  2,  3,  0, ASCR_BACK, 1}}, //CharAnim_Idle
-	{2, (const u8[]){ 4,  5, ASCR_BACK, 1}},         //CharAnim_Left
+	{2, (const u8[]){0, 1, 2, 3, 4, ASCR_BACK, 0}}, //CharAnim_Idle
+	{2, (const u8[]){5, 6, 7, 8, ASCR_BACK, 0}},         //CharAnim_Left
 	{0, (const u8[]){ASCR_CHGANI, CharAnim_Idle}},   //CharAnim_LeftAlt
-	{2, (const u8[]){ 6,  7, ASCR_BACK, 1}},         //CharAnim_Down
+	{2, (const u8[]){9, 10, 11, 12, ASCR_BACK, 0}},         //CharAnim_Down
 	{0, (const u8[]){ASCR_CHGANI, CharAnim_Idle}},   //CharAnim_DownAlt
-	{2, (const u8[]){ 8,  9, ASCR_BACK, 1}},         //CharAnim_Up
+	{2, (const u8[]){13, 14, 15, 16, ASCR_BACK, 0}},         //CharAnim_Up
 	{0, (const u8[]){ASCR_CHGANI, CharAnim_Idle}},   //CharAnim_UpAlt
-	{2, (const u8[]){10, 11, ASCR_BACK, 1}},         //CharAnim_Right
+	{2, (const u8[]){17, 18, 19, 20, ASCR_BACK, 0}},         //CharAnim_Right
 	{0, (const u8[]){ASCR_CHGANI, CharAnim_Idle}},   //CharAnim_RightAlt
 };
 
@@ -149,10 +173,25 @@ Character *Char_walt_New(fixed_t x, fixed_t y)
 	const char **pathp = (const char *[]){
 		"idle0.tim", //walt_ArcMain_Idle0
 		"idle1.tim", //walt_ArcMain_Idle1
+		"idle2.tim", //walt_ArcMain_Idle1
+		"idle3.tim", //walt_ArcMain_Idle1
+		"idle4.tim", //walt_ArcMain_Idle1
 		"left0.tim",  //walt_ArcMain_Left
+		"left1.tim",  //walt_ArcMain_Left
+		"left2.tim",  //walt_ArcMain_Left
+		"left3.tim",  //walt_ArcMain_Left
 		"down0.tim",  //walt_ArcMain_Down
+		"down1.tim",  //walt_ArcMain_Down
+		"down2.tim",  //walt_ArcMain_Down
+		"down3.tim",  //walt_ArcMain_Down
 		"up0.tim",    //walt_ArcMain_Up
+		"up1.tim",    //walt_ArcMain_Up
+		"up2.tim",    //walt_ArcMain_Up
+		"up3.tim",    //walt_ArcMain_Up
 		"right0.tim", //walt_ArcMain_Right
+		"right1.tim", //walt_ArcMain_Right
+		"right2.tim", //walt_ArcMain_Right
+		"right3.tim", //walt_ArcMain_Right
 		NULL
 	};
 	IO_Data *arc_ptr = this->arc_ptr;
