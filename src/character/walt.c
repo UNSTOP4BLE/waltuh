@@ -54,35 +54,35 @@ typedef struct
 
 //walt character definitions
 static const CharFrame char_walt_frame[] = {
-	{walt_ArcMain_Idle0, {  0,   0, 172, 194}, {  0,   0}},
-	{walt_ArcMain_Idle1, {  0,   0, 172, 196}, {  0,   0}},
-	{walt_ArcMain_Idle2, {  0,   0, 172, 197}, {  0,   0}},
-	{walt_ArcMain_Idle3, {  0,   0, 168, 195}, {  0,   0}},
-	{walt_ArcMain_Idle4, {  0,   0, 172, 195}, {  0,   0}},
+	{walt_ArcMain_Idle0, {  0,   0, 172, 194}, {100, 194}},
+	{walt_ArcMain_Idle1, {  0,   0, 172, 196}, {100, 196}},
+	{walt_ArcMain_Idle2, {  0,   0, 172, 197}, {100, 197}},
+	{walt_ArcMain_Idle3, {  0,   0, 168, 195}, { 98, 195}},
+	{walt_ArcMain_Idle4, {  0,   0, 172, 195}, { 99, 194}},
 
-	{walt_ArcMain_Left0, {  0,   0, 172, 193}, {  0,   0}},
-	{walt_ArcMain_Left1, {  0,   0, 172, 194}, {  0,   0}},
-	{walt_ArcMain_Left2, {  0,   0, 172, 195}, {  0,   0}},
-	{walt_ArcMain_Left3, {  0,   0, 172, 195}, {  0,   0}},
+	{walt_ArcMain_Left0, {  0,   0, 172, 193}, {100, 193}},
+	{walt_ArcMain_Left1, {  0,   0, 172, 194}, {100, 194}},
+	{walt_ArcMain_Left2, {  0,   0, 172, 195}, {100, 195}},
+	{walt_ArcMain_Left3, {  0,   0, 172, 195}, {100, 195}},
 
-	{walt_ArcMain_Down0, {  0,   0, 176, 181}, {  0,   0}},
-	{walt_ArcMain_Down1, {  0,   0, 176, 187}, {  0,   0}},
-	{walt_ArcMain_Down2, {  0,   0, 172, 192}, {  0,   0}},
-	{walt_ArcMain_Down3, {  0,   0, 168, 195}, {  0,   0}},
+	{walt_ArcMain_Down0, {  0,   0, 176, 181}, {100, 181}},
+	{walt_ArcMain_Down1, {  0,   0, 176, 187}, {100, 187}},
+	{walt_ArcMain_Down2, {  0,   0, 172, 192}, {100, 192}},
+	{walt_ArcMain_Down3, {  0,   0, 168, 195}, {100, 195}},
 
-	{walt_ArcMain_Up0, {  0,   0, 164, 202}, {  0,   0}},
-	{walt_ArcMain_Up1, {  0,   0, 164, 199}, {  0,   0}},
-	{walt_ArcMain_Up2, {  0,   0, 168, 197}, {  0,   0}},
-	{walt_ArcMain_Up3, {  0,   0, 172, 195}, {  0,   0}},
+	{walt_ArcMain_Up0, {  0,   0, 164, 202}, {100, 202}},
+	{walt_ArcMain_Up1, {  0,   0, 164, 199}, {100, 199}},
+	{walt_ArcMain_Up2, {  0,   0, 168, 197}, {100, 197}},
+	{walt_ArcMain_Up3, {  0,   0, 172, 195}, {100, 195}},
 
-	{walt_ArcMain_Idle0, {  0,   0, 172, 192}, {  0,   0}},
-	{walt_ArcMain_Idle0, {  0,   0, 172, 194}, {  0,   0}},
-	{walt_ArcMain_Idle0, {  0,   0, 172, 195}, {  0,   0}},
-	{walt_ArcMain_Idle0, {  0,   0, 172, 195}, {  0,   0}},
+	{walt_ArcMain_Idle0, {  0,   0, 172, 192}, {100, 192}},
+	{walt_ArcMain_Idle0, {  0,   0, 172, 194}, {100, 194}},
+	{walt_ArcMain_Idle0, {  0,   0, 172, 195}, {100, 195}},
+	{walt_ArcMain_Idle0, {  0,   0, 172, 195}, {100, 195}},
 };
 
 static const Animation char_walt_anim[CharAnim_Max] = {
-	{2, (const u8[]){0, 1, 2, 3, 4, ASCR_BACK, 0}}, //CharAnim_Idle
+	{2, (const u8[]){0, 1, 2, 3,  ASCR_BACK, 0}}, //CharAnim_Idle
 	{2, (const u8[]){5, 6, 7, 8, ASCR_BACK, 0}},         //CharAnim_Left
 	{0, (const u8[]){ASCR_CHGANI, CharAnim_Idle}},   //CharAnim_LeftAlt
 	{2, (const u8[]){9, 10, 11, 12, ASCR_BACK, 0}},         //CharAnim_Down
