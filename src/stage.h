@@ -42,11 +42,36 @@
 typedef enum
 {
 	StageId_1_1, //Bopeebo
-
+	StageId_1_2, //Fresh
+	StageId_1_3, //Dadbattle
+	StageId_1_4, //Tutorial
+	
+	StageId_2_1, //Spookeez
+	StageId_2_2, //South
+	StageId_2_3, //Monster
+	
+	StageId_3_1, //Pico
+	StageId_3_2, //Philly
+	StageId_3_3, //Blammed
+	
+	StageId_4_1, //Satin Panties
+	StageId_4_2, //High
+	StageId_4_3, //MILF
+	
+	StageId_4_4, //Test
+	
+	StageId_5_1, //Cocoa
+	StageId_5_2, //Eggnog
+	StageId_5_3, //Winter Horrorland
+	
+	StageId_6_1, //Senpai
+	StageId_6_2, //Roses
+	StageId_6_3, //Thorns
+	
 	StageId_Max
 } StageId;
 
-#define StageId_LastVanilla StageId_1_1
+#define StageId_LastVanilla StageId_6_3
 
 typedef enum
 {
@@ -164,8 +189,7 @@ typedef struct
 	struct
 	{
 		boolean ghost, downscroll, middlescroll, expsync, practice, debug, palmode, widescreen, sfxmiss, songtimer, botplay;
-		int savescore[6][3];
-		int specialscore[2]; // for tutorial and test song
+		int savescore[StageId_Max][3];
 	} prefs;
 
 	s32 mode;

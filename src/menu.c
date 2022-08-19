@@ -641,7 +641,13 @@ void Menu_Tick(void)
 				const char *tracks[3];
 				int length;
 			} menu_options[] = {
+				{NULL, StageId_1_4, "TUTORIAL", {"TUTORIAL", NULL, NULL}, 1},
 				{"1", StageId_1_1, "DADDY DEAREST", {"BOPEEBO", "FRESH", "DADBATTLE"}, 3},
+				{"2", StageId_2_1, "SPOOKY MONTH", {"SPOOKEEZ", "SOUTH", "MONSTER"}, 3},
+				{"3", StageId_3_1, "PICO", {"PICO", "PHILLY NICE", "BLAMMED"}, 3},
+				{"4", StageId_4_1, "MOMMY MUST MURDER", {"SATIN PANTIES", "HIGH", "MILF"}, 3},
+				{"5", StageId_5_1, "RED SNOW", {"COCOA", "EGGNOG", "WINTER HORRORLAND"}, 3},
+				{"6", StageId_6_1, "HATING SIMULATOR", {"SENPAI", "ROSES", "THORNS"}, 3},
 			};
 	
 			//Draw week name and tracks
@@ -783,7 +789,25 @@ void Menu_Tick(void)
 				const char *text;
 			} menu_options[] = {
 				//{StageId_4_4, 0xFFFC96D7, "TEST"},
+				{StageId_1_4, 0xFF9271FD, "TUTORIAL"},
 				{StageId_1_1, 0xFF9271FD, "BOPEEBO"},
+				{StageId_1_2, 0xFF9271FD, "FRESH"},
+				{StageId_1_3, 0xFF9271FD, "DADBATTLE"},
+				{StageId_2_1, 0xFF223344, "SPOOKEEZ"},
+				{StageId_2_2, 0xFF223344, "SOUTH"},
+				{StageId_2_3, 0xFF223344, "MONSTER"},
+				{StageId_3_1, 0xFF941653, "PICO"},
+				{StageId_3_2, 0xFF941653, "PHILLY NICE"},
+				{StageId_3_3, 0xFF941653, "BLAMMED"},
+				{StageId_4_1, 0xFFFC96D7, "SATIN PANTIES"},
+				{StageId_4_2, 0xFFFC96D7, "HIGH"},
+				{StageId_4_3, 0xFFFC96D7, "MILF"},
+				{StageId_5_1, 0xFFA0D1FF, "COCOA"},
+				{StageId_5_2, 0xFFA0D1FF, "EGGNOG"},
+				{StageId_5_3, 0xFFA0D1FF, "WINTER HORRORLAND"},
+				{StageId_6_1, 0xFFFF78BF, "SENPAI"},
+				{StageId_6_2, 0xFFFF78BF, "ROSES"},
+				{StageId_6_3, 0xFFFF78BF, "THORNS"},
 			};
 
 			menu.font_arial.draw(&menu.font_arial,
