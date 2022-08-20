@@ -26,7 +26,7 @@ void Speaker_Bump(Speaker *this)
 	this->bump = FIXED_DEC(4,1) / 24 - 1;
 }
 
-void Speaker_Tick(Speaker *this, fixed_t x, fixed_t y, fixed_t parallax)
+void Speaker_Tick(Speaker *this, fixed_t x, fixed_t y, fixed_t parallax, boolean scaledown)
 {
 	//Get frame to use according to bump
 	u8 frame;
@@ -41,7 +41,7 @@ void Speaker_Tick(Speaker *this, fixed_t x, fixed_t y, fixed_t parallax)
 	}
 	
 	//Draw speakers
-	static const struct SpeakerPiece
+	static struct SpeakerPiece
 	{
 		u8 rect[4];
 		u8 ox, oy;
@@ -64,33 +64,13 @@ void Speaker_Tick(Speaker *this, fixed_t x, fixed_t y, fixed_t parallax)
 		}
 	};
 
-	static const struct SpeakerPiecex
-	{
-		u8 rect[4];
-		u8 ox, oy;
-	} speaker_drawx[4][2] = {
-		{ //bump 0
-			{{134, 100, 121, 90},   0,  1},
-			{{ 0, 100,  134, 100}, 121 - 60, 0},
-		},
-		{ //bump 1
-			{{195,   0,  60, 91},   0 + 1,  0},
-			{{  0, 100, 134, 100},  60 + 1,  0},
-		},
-		{ //bump 2
-			{{  0,   0, 159, 100},   0,  0},
-			{{159,   0,  36, 100}, 159,  0},
-		},
-		{ //bump 3
-			{{  0,   0, 159, 100},   0,  0},
-			{{159,   0,  36, 100}, 159,  0},
-		}
-	};
-
 	const struct SpeakerPiece *piece = speaker_draw[frame];
-	const struct SpeakerPiecex *piecex = speaker_drawx[frame];
 
-		
+	if (scaledown)
+		speaker_draw[0][1].oy = 33;
+	else
+		speaker_draw[0][1].oy = 32;
+
 		for (int i = 0; i < 2; i++, piece++)
 		{
 			//Draw piece
@@ -101,7 +81,13 @@ void Speaker_Tick(Speaker *this, fixed_t x, fixed_t y, fixed_t parallax)
 				(fixed_t)piece->rect[2] << FIXED_SHIFT,
 				(fixed_t)piece->rect[3] << FIXED_SHIFT,
 			};
-			
+			if (scaledown)
+			{
+				piece_dst.x = x - FIXED_DEC(30,1) + ((fixed_t)piece->ox / 3 << FIXED_SHIFT) - FIXED_MUL(stage.camera.x * 8/10, parallax);
+				piece_dst.y = y + ((fixed_t)piece->oy / 3 << FIXED_SHIFT) - FIXED_MUL(stage.camera.y * 8/10, parallax);
+				piece_dst.w = (fixed_t)piece->rect[2] / 3 << FIXED_SHIFT;
+				piece_dst.h = (fixed_t)piece->rect[3] / 3 << FIXED_SHIFT;
+			}
 			Stage_DrawTex(&this->tex, &piece_src, &piece_dst, stage.camera.bzoom);
 		}
 	

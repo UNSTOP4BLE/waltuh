@@ -35,4 +35,4 @@ iso/walt/main.arc: iso/walt/idle0.tim iso/walt/idle1.tim iso/walt/idle2.tim iso/
 iso/gf/main.arc: iso/gf/gf0.tim iso/gf/gf1.tim iso/gf/gf2.tim
 
 # Week 1
-iso/week1/back.arc: iso/week1/back0.tim iso/week1/back1.tim
+iso/week1/back.arc: iso/week1/back.tim

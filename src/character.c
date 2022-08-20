@@ -44,6 +44,27 @@ void Character_DrawParallax(Character *this, Gfx_Tex *tex, const CharFrame *cfra
 	Stage_DrawTex(tex, &src, &dst, stage.camera.bzoom);
 }
 
+void Character_DrawGFParallax(Character *this, Gfx_Tex *tex, const CharFrame *cframe, fixed_t parallax, boolean scaledown)
+{
+	fixed_t x;
+	fixed_t y;
+	//Draw character
+	if (scaledown)
+	{
+		x = this->x - FIXED_MUL(stage.camera.x * 8/10, parallax) - FIXED_DEC(cframe->off[0] / 3,1);
+		y = this->y - FIXED_MUL(stage.camera.y * 8/10, parallax) - FIXED_DEC(cframe->off[1] / 3,1);
+	}
+	else
+	{
+		x = this->x - FIXED_MUL(stage.camera.x, parallax) - FIXED_DEC(cframe->off[0],1);
+		y = this->y - FIXED_MUL(stage.camera.y, parallax) - FIXED_DEC(cframe->off[1],1);
+	}
+
+	RECT src = {cframe->src[0], cframe->src[1], cframe->src[2], cframe->src[3]};
+	RECT_FIXED dst = {x, y, (src.w / (scaledown ? 3 : 1)) << FIXED_SHIFT, (src.h / (scaledown ? 3 : 1)) << FIXED_SHIFT};
+	Stage_DrawTex(tex, &src, &dst, stage.camera.bzoom);
+}
+
 void Character_DrawParallaxFlipped(Character *this, Gfx_Tex *tex, const CharFrame *cframe, fixed_t parallax)
 {
 	//Draw character
@@ -58,6 +79,11 @@ void Character_DrawParallaxFlipped(Character *this, Gfx_Tex *tex, const CharFram
 void Character_Draw(Character *this, Gfx_Tex *tex, const CharFrame *cframe)
 {
 	Character_DrawParallax(this, tex, cframe, FIXED_UNIT);
+}
+
+void Character_DrawGF(Character *this, Gfx_Tex *tex, const CharFrame *cframe, boolean scaledown)
+{
+	Character_DrawGFParallax(this, tex, cframe, FIXED_UNIT, scaledown);
 }
 
 void Character_DrawFlipped(Character *this, Gfx_Tex *tex, const CharFrame *cframe)

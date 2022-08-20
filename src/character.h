@@ -62,10 +62,12 @@ typedef struct Character
 //Character functions
 void Character_Free(Character *this);
 void Character_Init(Character *this, fixed_t x, fixed_t y);
+void Character_DrawGFParallax(Character *this, Gfx_Tex *tex, const CharFrame *cframe, fixed_t parallax, boolean scaledown);
 void Character_DrawParallax(Character *this, Gfx_Tex *tex, const CharFrame *cframe, fixed_t parallax);
 void Character_DrawParallaxFlipped(Character *this, Gfx_Tex *tex, const CharFrame *cframe, fixed_t parallax);
 void Character_Draw(Character *this, Gfx_Tex *tex, const CharFrame *cframe);
 void Character_DrawFlipped(Character *this, Gfx_Tex *tex, const CharFrame *cframe);
+void Character_DrawGF(Character *this, Gfx_Tex *tex, const CharFrame *cframe, boolean scaledown);
 
 void Character_CheckStartSing(Character *this);
 void Character_CheckEndSing(Character *this);

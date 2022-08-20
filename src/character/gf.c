@@ -13,6 +13,8 @@
 
 #include "speaker.h"
 
+boolean scalegfdown;
+
 //GF character structure
 enum
 {
@@ -135,9 +137,9 @@ void Char_GF_Tick(Character *character)
 	
 	//Animate and draw
 	Animatable_Animate(&character->animatable, (void*)this, Char_GF_SetFrame);
-	Character_DrawParallax(character, &this->tex, &char_gf_frame[this->frame], parallax);
+	Character_DrawGFParallax(character, &this->tex, &char_gf_frame[this->frame], parallax, scalegfdown);
 	
-	Speaker_Tick(&this->speaker, character->x, character->y, parallax);
+	Speaker_Tick(&this->speaker, character->x, character->y, parallax, scalegfdown);
 }
 
 void Char_GF_SetAnim(Character *character, u8 anim)
@@ -157,8 +159,10 @@ void Char_GF_Free(Character *character)
 	Mem_Free(this->arc_scene);
 }
 
-Character *Char_GF_New(fixed_t x, fixed_t y)
+Character *Char_GF_New(fixed_t x, fixed_t y, boolean scaledown)
 {
+	scalegfdown = scaledown;
+
 	//Allocate gf object
 	Char_GF *this = Mem_Alloc(sizeof(Char_GF));
 	if (this == NULL)
