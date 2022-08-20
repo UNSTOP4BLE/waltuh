@@ -344,7 +344,7 @@ static void Stage_NoteCheck(PlayerState *this, u8 type)
 			
 			//Hit the mine
 			note->type |= NOTE_FLAG_HIT;
-	
+			
 			this->health -= 2000;
 
 			if (this->character->spec & CHAR_SPEC_MISSANIM)
@@ -2020,6 +2020,13 @@ void Stage_Tick(void)
 							else
 								opponent_anote = note_anims[note->type & 0x3][(note->type & NOTE_FLAG_ALT_ANIM) != 0];
 							note->type |= NOTE_FLAG_HIT;
+
+							if (note->type & NOTE_FLAG_MINE)
+								stage.oppo2sing = "single";
+							else
+								stage.oppo2sing = "none";
+
+
 						}
 					}
 					

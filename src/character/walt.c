@@ -66,14 +66,14 @@ static const CharFrame char_walt_frame[] = {
 	{walt_ArcMain_Left3, {  0,   0, 172, 195}, {100 - 40, 195}},
 
 	{walt_ArcMain_Down0, {  0,   0, 176, 181}, {100 - 40, 181}},
-	{walt_ArcMain_Down1, {  0,   0, 176, 187}, { 95 - 40, 187}},
-	{walt_ArcMain_Down2, {  0,   0, 172, 192}, { 98 - 40, 192}},
-	{walt_ArcMain_Down3, {  0,   0, 168, 195}, { 92 - 40, 195}},
+	{walt_ArcMain_Down1, {  0,   0, 176, 187}, { 99 - 40, 188}},
+	{walt_ArcMain_Down2, {  0,   0, 172, 192}, { 98 - 40, 193}},
+	{walt_ArcMain_Down3, {  0,   0, 168, 195}, { 99 - 40, 195}},
 
 	{walt_ArcMain_Up0, {  0,   0, 164, 202}, {100 - 40, 202}},
-	{walt_ArcMain_Up1, {  0,   0, 164, 199}, {100 - 40, 199}},
-	{walt_ArcMain_Up2, {  0,   0, 168, 197}, {100 - 40, 197}},
-	{walt_ArcMain_Up3, {  0,   0, 172, 195}, {100 - 40, 195}},
+	{walt_ArcMain_Up1, {  0,   0, 164, 199}, {102 - 40, 199}},
+	{walt_ArcMain_Up2, {  0,   0, 168, 197}, {102 - 40, 197}},
+	{walt_ArcMain_Up3, {  0,   0, 172, 195}, {103 - 40, 195}},
 
 	{walt_ArcMain_Right0, {  0,   0, 172, 192}, {100 - 40, 192}},
 	{walt_ArcMain_Right1, {  0,   0, 172, 194}, {100 - 40, 194}},
@@ -85,7 +85,7 @@ static const Animation char_walt_anim[CharAnim_Max] = {
 	{2, (const u8[]){0, 1, 2, 3,  ASCR_BACK, 0}}, //CharAnim_Idle
 	{2, (const u8[]){5, 6, 7, 8, ASCR_BACK, 0}},         //CharAnim_Left
 	{0, (const u8[]){ASCR_CHGANI, CharAnim_Idle}},   //CharAnim_LeftAlt
-	{2, (const u8[]){9, 10, ASCR_BACK, 0}},         //CharAnim_Down
+	{2, (const u8[]){9, 10, 11, 12, ASCR_BACK, 0}},         //CharAnim_Down
 	{0, (const u8[]){ASCR_CHGANI, CharAnim_Idle}},   //CharAnim_DownAlt
 	{2, (const u8[]){13, 14, 15, 16, ASCR_BACK, 0}},         //CharAnim_Up
 	{0, (const u8[]){ASCR_CHGANI, CharAnim_Idle}},   //CharAnim_UpAlt
