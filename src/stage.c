@@ -1101,6 +1101,15 @@ static void Stage_DrawNotes(void)
 	}
 }
 
+static void Stage_ChangeZoom(int zoom, const char *mode)
+{
+	if (mode == "change")
+		stage.camera.bzoom = zoom;
+	else if (mode == "default")
+		stage.camera.bzoom = FIXED_MUL(stage.camera.zoom, stage.bump);
+
+}
+
 static void Stage_CountDown(void)
 {
 	switch(stage.song_step)
