@@ -1103,9 +1103,9 @@ static void Stage_DrawNotes(void)
 
 static void Stage_ChangeZoom(int zoom, const char *mode)
 {
-	if (mode == "change")
+	if (strcmp(mode, "change") == 0)
 		stage.camera.bzoom = zoom;
-	else if (mode == "default")
+	else if (strcmp(mode, "default") == 0)
 		stage.camera.bzoom = FIXED_MUL(stage.camera.zoom, stage.bump);
 
 }
