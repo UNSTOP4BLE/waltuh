@@ -82,13 +82,15 @@ static void Stage_CutVocal(void)
 	}
 }
 
+boolean zooming;
 //Stage camera functions
 static void Stage_FocusCharacter(Character *ch, fixed_t div)
 {
 	//Use character focus settings to update target position and zoom
 	stage.camera.tx = ch->x + ch->focus_x;
 	stage.camera.ty = ch->y + ch->focus_y;
-	stage.camera.tz = ch->focus_zoom;
+	if (!zooming)
+		stage.camera.tz = ch->focus_zoom;
 	stage.camera.td = div;
 }
 
@@ -1104,9 +1106,12 @@ static void Stage_DrawNotes(void)
 static void Stage_ChangeZoom(int zoom, const char *mode)
 {
 	if (strcmp(mode, "change") == 0)
-		stage.camera.zoom = zoom;
+	{
+		zooming = true;
+		stage.camera.tz = zoom;
+	}
 	else if (strcmp(mode, "default") == 0)
-		stage.camera.zoom = stage.camera.tz;
+		zooming = false;
 
 }
 
@@ -1358,6 +1363,7 @@ static void Stage_LoadState(void)
 		drawshit = 0;
 		if (!stage.prefs.debug)
 			stage.freecam = 0;
+		zooming = false;
 		stage.player_state[i].miss = 0;
 		stage.player_state[i].accuracy = 0;
 		stage.player_state[i].max_accuracy = 0;
@@ -1676,11 +1682,138 @@ void Stage_Tick(void)
 				case StageId_1_1:
 					switch(stage.song_step)
 					{
-						case 20: 
-							Stage_ChangeZoom(FIXED_DEC(17,10), "change");
+						case 64: 
+							Stage_ChangeZoom(FIXED_DEC(13,10), "change"); //1
+						break;
+						case 95: 
+							Stage_ChangeZoom(FIXED_DEC(12,10), "change"); //0.9
+						break;
+						case 128: 
+							Stage_ChangeZoom(FIXED_DEC(13,10), "change"); //1
+						break;
+						case 160: 
+							Stage_ChangeZoom(FIXED_DEC(12,10), "change"); //0.9
+						break;
+						case 193: 
+							Stage_ChangeZoom(FIXED_DEC(15,10), "change"); //1.2
+						break;
+						case 208: 
+							Stage_ChangeZoom(FIXED_DEC(13,10), "change"); //1
+						break;
+						case 224: 
+							Stage_ChangeZoom(FIXED_DEC(15,10), "change"); //1.2
+						break;
+						case 240: 
+							Stage_ChangeZoom(FIXED_DEC(17,10), "change"); //1.4
+						break;
+						case 256: 
+							Stage_ChangeZoom(FIXED_DEC(12,10), "change"); //0.9
+						break;
+						case 272: 
+							Stage_ChangeZoom(FIXED_DEC(15,10), "change"); //1.2
+						break;
+						case 288: 
+							Stage_ChangeZoom(FIXED_DEC(12,10), "change"); //0.9
+						break;
+						case 304: 
+							Stage_ChangeZoom(FIXED_DEC(15,10), "change"); //1.2
+						break;
+						case 320: 
+							Stage_ChangeZoom(FIXED_DEC(12,10), "change"); //0.9
+						break;
+						case 352: 
+							Stage_ChangeZoom(FIXED_DEC(15,10), "change"); //1.2
+						break;
+						case 368: 
+							Stage_ChangeZoom(FIXED_DEC(17,10), "change"); //1.4
+						break;
+						case 384: 
+							Stage_ChangeZoom(FIXED_DEC(12,10), "change"); //0.9
+						break;
+						case 400: 
+							Stage_ChangeZoom(FIXED_DEC(15,10), "change"); //1.2
+						break;
+						case 416: 
+							Stage_ChangeZoom(FIXED_DEC(12,10), "change"); //0.9
+						break;
+						case 432: 
+							Stage_ChangeZoom(FIXED_DEC(15,10), "change"); //1.2
+						break;
+						case 448: 
+							Stage_ChangeZoom(FIXED_DEC(12,10), "change"); //0.9
+						break;
+						case 703: 
+							Stage_ChangeZoom(FIXED_DEC(16,10), "change"); //1.3
+						break;
+						case 800: 
+							Stage_ChangeZoom(FIXED_DEC(12,10), "change"); //0.9
+						break;
+						case 832: 
+							Stage_ChangeZoom(FIXED_DEC(15,10), "change"); //1.2
+						break;
+						case 848: 
+							Stage_ChangeZoom(FIXED_DEC(17,10), "change"); //1.4
+						break;
+						case 864: 
+							Stage_ChangeZoom(FIXED_DEC(12,10), "change"); //0.9
+						break;
+						case 880: 
+							Stage_ChangeZoom(FIXED_DEC(15,10), "change"); //1.2
+						break;
+						case 896: 
+							Stage_ChangeZoom(FIXED_DEC(12,10), "change"); //0.9
+						break;
+						case 912: 
+							Stage_ChangeZoom(FIXED_DEC(15,10), "change"); //1.2
+						break;
+						case 928: 
+							Stage_ChangeZoom(FIXED_DEC(12,10), "change"); //0.9
+						break;
+						case 944: 
+							Stage_ChangeZoom(FIXED_DEC(13,10), "change"); //1
+						break;
+						case 960: 
+							Stage_ChangeZoom(FIXED_DEC(15,10), "change"); //1.2
+						break;
+						case 976: 
+							Stage_ChangeZoom(FIXED_DEC(17,10), "change"); //1.4
+						break;
+						case 992: 
+							Stage_ChangeZoom(FIXED_DEC(12,10), "change"); //0.9
+						break;
+						case 1008: 
+							Stage_ChangeZoom(FIXED_DEC(15,10), "change"); //1.2
+						break;
+						case 1024: 
+							Stage_ChangeZoom(FIXED_DEC(12,10), "change"); //0.9
+						break;
+						case 1040: 
+							Stage_ChangeZoom(FIXED_DEC(15,10), "change"); //1.2
+						break;
+						case 1056: 
+							Stage_ChangeZoom(FIXED_DEC(12,10), "change"); //0.9
+						break;
+						case 1072: 
+							Stage_ChangeZoom(FIXED_DEC(13,10), "change"); //1
+						break;
+						case 1088: 
+							Stage_ChangeZoom(FIXED_DEC(12,10), "change"); //0.9
+						break;
+						case 1120: 
+							Stage_ChangeZoom(FIXED_DEC(13,10), "change"); //1
+						break;
+						case 1152: 
+							Stage_ChangeZoom(FIXED_DEC(12,10), "change"); //0.9
+						break;
+						case 1168: 
+							Stage_ChangeZoom(FIXED_DEC(15,10), "change"); //1.2
+						break;
+						case 1184: 
+							Stage_ChangeZoom(FIXED_DEC(12,10), "change"); //0.9
 						break;
 					}
 				break;
+				default: break;
 			}
 			if (stage.prefs.songtimer)
 				StageTimer_Draw();

@@ -33,10 +33,10 @@ void Back_Week1_DrawBG(StageBack *back)
 	
 	RECT back_src = {0, 0, 255, 255};
 	RECT_FIXED back_dst = {
-		FIXED_DEC(-310,1) - fx,
-		FIXED_DEC(-167,1) - fy,
-		FIXED_DEC(590,1),
-		FIXED_DEC(324,1)
+		FIXED_DEC(-288,1) - fx,
+		FIXED_DEC(-141,1) - fy,
+		FIXED_DEC(570,1),
+		FIXED_DEC(295,1)
 	};
 
 	Debug_StageMoveDebug(&back_dst, 4, fx, fy);
