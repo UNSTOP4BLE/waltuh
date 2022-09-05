@@ -46,7 +46,7 @@ typedef struct Character
 	
 	//Position
 	fixed_t x, y;
-	
+
 	//Character information
 	CharSpec spec;
 	u8 health_i; //hud1.tim

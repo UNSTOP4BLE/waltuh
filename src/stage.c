@@ -776,22 +776,19 @@ static void Stage_DrawHealth(s16 health, u8 i, s8 ox)
 {
 //Check if we should use 'dying' frame
 	s8 dying;
-	s8 winning;
 	if (ox < 0)
 	{
 		dying = (health >= 18000) * 46;
-		winning = (health <= 2000) * 46*2;
 	}
     else
 	{
 	dying = (health <= 2000) * 46;
-	winning = (health >= 18000) * 46*2;
 	}
 
 	//Get src and dst
 	fixed_t hx = (128 << FIXED_SHIFT) * (10000 - health) / 10000;
 	RECT src = {
-		(i % 1) * 114 + dying + winning,
+		(i % 1) * 114 + dying,
 		16 + (i / 1) * 46,
 		46,
 		46,
@@ -1074,53 +1071,6 @@ static void Stage_DrawNotes(void)
 							Stage_DrawTex(&stage.tex_hud0, &note_src, &note_dst, stage.bump);
 					}
 				}
-			}
-			else if (note->type & NOTE_FLAG_MINE)
-			{
-				//Don't draw if already hit
-				if (note->type & NOTE_FLAG_HIT)
-					continue;
-				
-				//Draw note body
-				note_src.x = 192 + ((note->type & 0x1) << 5);
-				note_src.y = (note->type & 0x2) << 4;
-				note_src.w = 32;
-				note_src.h = 32;
-				
-				note_dst.x = stage.noteshakex + note_x[(note->type & 0x7)] - FIXED_DEC(16,1);
-				note_dst.y = stage.noteshakey + y - FIXED_DEC(16,1);
-				note_dst.w = note_src.w << FIXED_SHIFT;
-				note_dst.h = note_src.h << FIXED_SHIFT;
-				
-				if (stage.prefs.downscroll)
-					note_dst.y = -note_dst.y - note_dst.h;
-				//draw for opponent
-				if (stage.prefs.middlescroll && note->type & NOTE_FLAG_OPPONENT)
-					Stage_BlendTex(&stage.tex_hud0, &note_src, &note_dst, stage.bump, 1);
-				else
-					Stage_DrawTex(&stage.tex_hud0, &note_src, &note_dst, stage.bump);
-				
-				//Draw note fire
-				note_src.x = 192 + ((animf_count & 0x1) << 5);
-				note_src.y = 64 + ((animf_count & 0x2) * 24);
-				note_src.w = 32;
-				note_src.h = 48;
-					
-				if (stage.prefs.downscroll)
-				{
-					note_dst.y += note_dst.h;
-					note_dst.h = note_dst.h * -3 / 2;
-				}
-				else
-				{
-					note_dst.h = note_dst.h * 3 / 2;
-				}
-				//draw for opponent
-				if (stage.prefs.middlescroll && note->type & NOTE_FLAG_OPPONENT)
-					Stage_BlendTex(&stage.tex_hud0, &note_src, &note_dst, stage.bump, 1);
-				else
-					Stage_DrawTex(&stage.tex_hud0, &note_src, &note_dst, stage.bump);
-				
 			}
 			else
 			{
@@ -1487,6 +1437,11 @@ void Stage_Load(StageId id, StageDiff difficulty, boolean story)
 	FontData_Load(&stage.font_cdr, Font_CDR);
 
 	//Load characters
+	if (stage.stage_id == StageId_1_1)
+		stage.scalegfdown = true;
+	else
+		stage.scalegfdown = false;
+
 	Stage_LoadPlayer();
 	Stage_LoadOpponent();
 	Stage_LoadOpponent2();	

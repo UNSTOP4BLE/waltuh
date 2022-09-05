@@ -163,9 +163,9 @@ Character *Char_walt_New(fixed_t x, fixed_t y)
 	//health bar color
 	this->character.health_bar = 0xFFAD63D6;
 	
-	this->character.focus_x = FIXED_DEC(65,1);
-	this->character.focus_y = FIXED_DEC(-115,1);
-	this->character.focus_zoom = FIXED_DEC(1,1);
+	this->character.focus_x = FIXED_DEC(-90 - -120,1);
+	this->character.focus_y = FIXED_DEC(-14 - 100,1);
+	this->character.focus_zoom = FIXED_DEC(12,10);
 	
 	//Load art
 	this->arc_main = IO_Read("\\CHAR\\WALT.ARC;1");

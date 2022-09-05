@@ -159,9 +159,9 @@ void Char_GF_Free(Character *character)
 	Mem_Free(this->arc_scene);
 }
 
-Character *Char_GF_New(fixed_t x, fixed_t y, boolean scaledown)
+Character *Char_GF_New(fixed_t x, fixed_t y)
 {
-	scalegfdown = scaledown;
+	scalegfdown = stage.scalegfdown;
 
 	//Allocate gf object
 	Char_GF *this = Mem_Alloc(sizeof(Char_GF));

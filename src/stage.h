@@ -186,6 +186,7 @@ typedef struct
 
 	//Stage settings
 	int pal_i, wide_i;
+	boolean scalegfdown;
 	struct
 	{
 		boolean ghost, downscroll, middlescroll, expsync, practice, debug, palmode, widescreen, sfxmiss, songtimer, botplay;
