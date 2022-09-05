@@ -1104,9 +1104,9 @@ static void Stage_DrawNotes(void)
 static void Stage_ChangeZoom(int zoom, const char *mode)
 {
 	if (strcmp(mode, "change") == 0)
-		stage.camera.bzoom = zoom;
+		stage.camera.zoom = zoom;
 	else if (strcmp(mode, "default") == 0)
-		stage.camera.bzoom = FIXED_MUL(stage.camera.zoom, stage.bump);
+		stage.camera.zoom = stage.camera.tz;
 
 }
 
@@ -1671,12 +1671,23 @@ void Stage_Tick(void)
 	{
 		case StageState_Play:
 		{ 
+		    switch(stage.stage_id)
+			{
+				case StageId_1_1:
+					switch(stage.song_step)
+					{
+						case 20: 
+							Stage_ChangeZoom(FIXED_DEC(17,10), "change");
+						break;
+					}
+				break;
+			}
 			if (stage.prefs.songtimer)
 				StageTimer_Draw();
 			if (stage.prefs.debug)
 				Debug_StageDebug();
 
-			//FntPrint("step %d, beat %d", stage.song_step, stage.song_beat);
+			FntPrint("step %d, beat %d", stage.song_step, stage.song_beat);
 
 			Stage_CountDown();
 
