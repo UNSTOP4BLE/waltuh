@@ -39,13 +39,31 @@ static SkullFragment char_bf_skull[15] = {
 //Boyfriend player types
 enum
 {
-	BF_ArcMain_BF0,
-	BF_ArcMain_BF1,
-	BF_ArcMain_BF2,
-	BF_ArcMain_BF3,
-	BF_ArcMain_BF4,
-	BF_ArcMain_BF5,
-	BF_ArcMain_BF6,
+	BF_ArcMain_Idle0,
+	BF_ArcMain_Idle1,
+	BF_ArcMain_Idle2,
+	BF_ArcMain_Idle3,
+
+	BF_ArcMain_Left0,
+	BF_ArcMain_Left1,
+	BF_ArcMain_Left2,
+	BF_ArcMain_Left3,
+
+	BF_ArcMain_Down0,
+	BF_ArcMain_Down1,
+	BF_ArcMain_Down2,
+	BF_ArcMain_Down3,
+	
+	BF_ArcMain_Up0,
+	BF_ArcMain_Up1,
+	BF_ArcMain_Up2,
+	BF_ArcMain_Up3,
+
+	BF_ArcMain_Right0,
+	BF_ArcMain_Right1,
+	BF_ArcMain_Right2,
+	BF_ArcMain_Right3,
+
 	BF_ArcMain_Dead0, //BREAK
 	
 	BF_ArcMain_Max,
@@ -83,45 +101,31 @@ typedef struct
 
 //Boyfriend player definitions
 static const CharFrame char_bf_frame[] = {
-	{BF_ArcMain_BF0, {  0,   0, 102,  99}, { 53,  92}}, //0 idle 1
-	{BF_ArcMain_BF0, {103,   0, 102,  99}, { 53,  92}}, //1 idle 2
-	{BF_ArcMain_BF0, {  0, 100, 102, 101}, { 53,  94}}, //2 idle 3
-	{BF_ArcMain_BF0, {103, 100, 103, 104}, { 53,  97}}, //3 idle 4
-	{BF_ArcMain_BF1, {  0,   0, 103, 104}, { 53,  97}}, //4 idle 5
-	
-	{BF_ArcMain_BF1, {104,   0,  96, 102}, { 56,  95}}, //5 left 1
-	{BF_ArcMain_BF1, {  0, 105,  94, 102}, { 54,  95}}, //6 left 2
-	
-	{BF_ArcMain_BF1, { 95, 103,  94,  89}, { 52,  82}}, //7 down 1
-	{BF_ArcMain_BF2, {  0,   0,  94,  90}, { 52,  83}}, //8 down 2
-	
-	{BF_ArcMain_BF2, { 95,   0,  93, 112}, { 41, 104}}, //9 up 1
-	{BF_ArcMain_BF2, {  0,  91,  94, 111}, { 42, 103}}, //10 up 2
-	
-	{BF_ArcMain_BF2, { 95, 113, 102, 102}, { 41,  95}}, //11 right 1
-	{BF_ArcMain_BF3, {  0,   0, 102, 102}, { 41,  95}}, //12 right 2
-	
-	{BF_ArcMain_BF3, {103,   0,  99, 105}, { 54,  98}}, //13 peace 1
-	{BF_ArcMain_BF3, {  0, 103, 104, 103}, { 54,  96}}, //14 peace 2
-	{BF_ArcMain_BF3, {105, 106, 104, 104}, { 54,  97}}, //15 peace 3
-	
-	{BF_ArcMain_BF4, {  0,   0, 128, 128}, { 53,  92}}, //16 sweat 1
-	{BF_ArcMain_BF4, {128,   0, 128, 128}, { 53,  93}}, //17 sweat 2
-	{BF_ArcMain_BF4, {  0, 128, 128, 128}, { 53,  98}}, //18 sweat 3
-	{BF_ArcMain_BF4, {128, 128, 128, 128}, { 53,  98}}, //19 sweat 4
-	
-	{BF_ArcMain_BF5, {  0,   0,  93, 108}, { 52, 101}}, //20 left miss 1
-	{BF_ArcMain_BF5, { 94,   0,  93, 108}, { 52, 101}}, //21 left miss 2
-	
-	{BF_ArcMain_BF5, {  0, 109,  95,  98}, { 50,  90}}, //22 down miss 1
-	{BF_ArcMain_BF5, { 96, 109,  95,  97}, { 50,  89}}, //23 down miss 2
-	
-	{BF_ArcMain_BF6, {  0,   0,  90, 107}, { 44,  99}}, //24 up miss 1
-	{BF_ArcMain_BF6, { 91,   0,  89, 108}, { 44, 100}}, //25 up miss 2
-	
-	{BF_ArcMain_BF6, {  0, 108,  99, 108}, { 42, 101}}, //26 right miss 1
-	{BF_ArcMain_BF6, {100, 109, 101, 108}, { 43, 101}}, //27 right miss 2
+	{BF_ArcMain_Idle0, {  0,   0,   0,   0}, {  0,   0}}, 
+	{BF_ArcMain_Idle1, {  0,   0,   0,   0}, {  0,   0}}, 
+	{BF_ArcMain_Idle2, {  0,   0,   0,   0}, {  0,   0}}, 
+	{BF_ArcMain_Idle3, {  0,   0,   0,   0}, {  0,   0}}, 
 
+	{BF_ArcMain_Left0, {  0,   0,   0,   0}, {  0,   0}}, 
+	{BF_ArcMain_Left1, {  0,   0,   0,   0}, {  0,   0}}, 
+	{BF_ArcMain_Left2, {  0,   0,   0,   0}, {  0,   0}}, 
+	{BF_ArcMain_Left3, {  0,   0,   0,   0}, {  0,   0}}, 
+
+	{BF_ArcMain_Down0, {  0,   0,   0,   0}, {  0,   0}}, 
+	{BF_ArcMain_Down1, {  0,   0,   0,   0}, {  0,   0}}, 
+	{BF_ArcMain_Down2, {  0,   0,   0,   0}, {  0,   0}}, 
+	{BF_ArcMain_Down3, {  0,   0,   0,   0}, {  0,   0}}, 
+
+	{BF_ArcMain_Up0, {  0,   0,   0,   0}, {  0,   0}}, 
+	{BF_ArcMain_Up1, {  0,   0,   0,   0}, {  0,   0}},
+	{BF_ArcMain_Up2, {  0,   0,   0,   0}, {  0,   0}}, 
+	{BF_ArcMain_Up3, {  0,   0,   0,   0}, {  0,   0}}, 
+
+	{BF_ArcMain_Right0, {  0,   0,   0,   0}, {  0,   0}}, 
+	{BF_ArcMain_Right1, {  0,   0,   0,   0}, {  0,   0}}, 
+	{BF_ArcMain_Right2, {  0,   0,   0,   0}, {  0,   0}}, 
+	{BF_ArcMain_Right3, {  0,   0,   0,   0}, {  0,   0}}, 
+	
 	{BF_ArcMain_Dead0, {  0,   0, 128, 128}, { 53,  98}}, //23 dead0 0
 	{BF_ArcMain_Dead0, {128,   0, 128, 128}, { 53,  98}}, //24 dead0 1
 	{BF_ArcMain_Dead0, {  0, 128, 128, 128}, { 53,  98}}, //25 dead0 2
@@ -139,14 +143,14 @@ static const CharFrame char_bf_frame[] = {
 };
 
 static const Animation char_bf_anim[PlayerAnim_Max] = {
-	{2, (const u8[]){ 0,  1,  2,  3,  4, ASCR_BACK, 1}}, //CharAnim_Idle
-	{2, (const u8[]){ 5,  6, ASCR_BACK, 1}},             //CharAnim_Left
+	{2, (const u8[]){ 0,  1,  2,  3,  ASCR_BACK, 0}}, //CharAnim_Idle
+	{2, (const u8[]){ 4,  5,  6,  7,  ASCR_BACK, 0}},             //CharAnim_Left
 	{0, (const u8[]){ASCR_CHGANI, CharAnim_Idle}},       //CharAnim_LeftAlt
-	{2, (const u8[]){ 7,  8, ASCR_BACK, 1}},             //CharAnim_Down
+	{2, (const u8[]){ 8,  9, 10, 11,  ASCR_BACK, 0}},             //CharAnim_Down
 	{0, (const u8[]){ASCR_CHGANI, CharAnim_Idle}},       //CharAnim_DownAlt
-	{2, (const u8[]){ 9, 10, ASCR_BACK, 1}},             //CharAnim_Up
+	{2, (const u8[]){12, 13, 14, 15,  ASCR_BACK, 0}},             //CharAnim_Up
 	{0, (const u8[]){ASCR_CHGANI, CharAnim_Idle}},       //CharAnim_UpAlt
-	{2, (const u8[]){11, 12, ASCR_BACK, 1}},             //CharAnim_Right
+	{2, (const u8[]){16, 17, 18, 19, ASCR_BACK, 0}},             //CharAnim_Right
 	{0, (const u8[]){ASCR_CHGANI, CharAnim_Idle}},       //CharAnim_RightAlt
 	
 	{1, (const u8[]){ 5, 20, 20, 21, ASCR_BACK, 1}},     //PlayerAnim_LeftMiss
@@ -414,7 +418,7 @@ Character *Char_BF_New(fixed_t x, fixed_t y)
 	
 	this->character.focus_x = FIXED_DEC(-50,1);
 	this->character.focus_y = FIXED_DEC(-65,1);
-	this->character.focus_zoom = FIXED_DEC(1,1);
+	this->character.focus_zoom = FIXED_DEC(14,10);
 	
 	//Load art
 		this->arc_main = IO_Read("\\CHAR\\BF.ARC;1");
@@ -422,13 +426,31 @@ Character *Char_BF_New(fixed_t x, fixed_t y)
 		IO_FindFile(&this->file_dead_arc, "\\CHAR\\BFDEAD.ARC;1");
 		
 		const char **pathp = (const char *[]){
-			"bf0.tim",   //BF_ArcMain_BF0
-			"bf1.tim",   //BF_ArcMain_BF1
-			"bf2.tim",   //BF_ArcMain_BF2
-			"bf3.tim",   //BF_ArcMain_BF3
-			"bf4.tim",   //BF_ArcMain_BF4
-			"bf5.tim",   //BF_ArcMain_BF5
-			"bf6.tim",   //BF_ArcMain_BF6
+			"idle0.tim", 
+			"idle1.tim", 
+			"idle2.tim", 
+			"idle3.tim", 
+			
+			"left0.tim", 
+			"left1.tim", 
+			"left2.tim", 
+			"left3.tim", 
+
+			"down0.tim",
+			"down1.tim",
+			"down2.tim",
+			"down3.tim",
+
+			"up0.tim",
+			"up1.tim",
+			"up2.tim",
+			"up3.tim",
+
+			"right0.tim",
+			"right1.tim",
+			"right2.tim",
+			"right3.tim",
+
 			"dead0.tim", //BF_ArcMain_Dead0
 			NULL
 		};
