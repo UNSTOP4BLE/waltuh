@@ -50,6 +50,7 @@ char iconpath[30];
 
 #include "character/bf.h"
 #include "character/walt.h"
+#include "character/jesse.h"
 #include "character/gf.h"
 
 #include "stage/week1.h"
