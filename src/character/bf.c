@@ -101,30 +101,30 @@ typedef struct
 
 //Boyfriend player definitions
 static const CharFrame char_bf_frame[] = {
-	{BF_ArcMain_Idle0, {  0,   0, 144, 194}, {  0,   0}}, 
-	{BF_ArcMain_Idle1, {  0,   0, 140, 198}, {  0,   0}}, 
-	{BF_ArcMain_Idle2, {  0,   0, 140, 200}, {  0,   0}}, 
-	{BF_ArcMain_Idle3, {  0,   0, 140, 198}, {  0,   0}}, 
+	{BF_ArcMain_Idle0, {  0,   0, 144, 194}, {  0, 194}}, 
+	{BF_ArcMain_Idle1, {  0,   0, 140, 198}, {  0, 198}}, 
+	{BF_ArcMain_Idle2, {  0,   0, 140, 200}, {  0, 200}}, 
+	{BF_ArcMain_Idle3, {  0,   0, 140, 198}, {  0, 198}}, 
 
-	{BF_ArcMain_Left0, {  0,   0, 136, 198}, {  0,   0}}, 
-	{BF_ArcMain_Left1, {  0,   0, 140, 198}, {  0,   0}}, 
-	{BF_ArcMain_Left2, {  0,   0, 136, 198}, {  0,   0}}, 
-	{BF_ArcMain_Left3, {  0,   0, 140, 198}, {  0,   0}}, 
+	{BF_ArcMain_Left0, {  0,   0, 136, 198}, {  0, 198}}, 
+	{BF_ArcMain_Left1, {  0,   0, 140, 198}, {  0, 198}}, 
+	{BF_ArcMain_Left2, {  0,   0, 136, 198}, {  0, 198}}, 
+	{BF_ArcMain_Left3, {  0,   0, 140, 198}, {  0, 198}}, 
 
-	{BF_ArcMain_Down0, {  0,   0, 144, 193}, {  0,   0}}, 
-	{BF_ArcMain_Down1, {  0,   0, 144, 196}, {  0,   0}}, 
-	{BF_ArcMain_Down2, {  0,   0, 140, 198}, {  0,   0}}, 
-	{BF_ArcMain_Down3, {  0,   0, 136, 199}, {  0,   0}}, 
+	{BF_ArcMain_Down0, {  0,   0, 144, 193}, {  0, 193}}, 
+	{BF_ArcMain_Down1, {  0,   0, 144, 196}, {  0, 196}}, 
+	{BF_ArcMain_Down2, {  0,   0, 140, 198}, {  0, 198}}, 
+	{BF_ArcMain_Down3, {  0,   0, 136, 199}, {  0, 199}}, 
 
-	{BF_ArcMain_Up0, {  0,   0, 132, 207}, {  0,   0}}, 
-	{BF_ArcMain_Up1, {  0,   0, 136, 203}, {  0,   0}},
-	{BF_ArcMain_Up2, {  0,   0, 136, 201}, {  0,   0}}, 
-	{BF_ArcMain_Up3, {  0,   0, 136, 199}, {  0,   0}}, 
+	{BF_ArcMain_Up0, {  0,   0, 132, 207}, {  0, 207}}, 
+	{BF_ArcMain_Up1, {  0,   0, 136, 203}, {  0, 203}},
+	{BF_ArcMain_Up2, {  0,   0, 136, 201}, {  0, 201}}, 
+	{BF_ArcMain_Up3, {  0,   0, 136, 199}, {  0, 199}}, 
 
-	{BF_ArcMain_Right0, {  0,   0, 140, 198}, {  0,   0}}, 
-	{BF_ArcMain_Right1, {  0,   0, 140, 198}, {  0,   0}}, 
-	{BF_ArcMain_Right2, {  0,   0, 140, 198}, {  0,   0}}, 
-	{BF_ArcMain_Right3, {  0,   0, 140, 198}, {  0,   0}}, 
+	{BF_ArcMain_Right0, {  0,   0, 140, 198}, {  0, 198}}, 
+	{BF_ArcMain_Right1, {  0,   0, 140, 198}, {  0, 198}}, 
+	{BF_ArcMain_Right2, {  0,   0, 140, 198}, {  0, 198}}, 
+	{BF_ArcMain_Right3, {  0,   0, 140, 198}, {  0, 198}}, 
 	
 	{BF_ArcMain_Dead0, {  0,   0, 128, 128}, { 53,  98}}, //23 dead0 0
 	{BF_ArcMain_Dead0, {128,   0, 128, 128}, { 53,  98}}, //24 dead0 1
@@ -416,8 +416,8 @@ Character *Char_BF_New(fixed_t x, fixed_t y)
 	//health bar color
 	this->character.health_bar = 0xFF29B5D6;
 	
-	this->character.focus_x = FIXED_DEC(-50,1);
-	this->character.focus_y = FIXED_DEC(-65,1);
+	this->character.focus_x = FIXED_DEC(60,1);
+	this->character.focus_y = FIXED_DEC(-12 - 100,1);
 	this->character.focus_zoom = FIXED_DEC(14,10);
 	
 	//Load art
