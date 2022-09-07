@@ -101,30 +101,30 @@ typedef struct
 
 //Boyfriend player definitions
 static const CharFrame char_bf_frame[] = {
-	{BF_ArcMain_Idle0, {  0,   0,   0,   0}, {  0,   0}}, 
-	{BF_ArcMain_Idle1, {  0,   0,   0,   0}, {  0,   0}}, 
-	{BF_ArcMain_Idle2, {  0,   0,   0,   0}, {  0,   0}}, 
-	{BF_ArcMain_Idle3, {  0,   0,   0,   0}, {  0,   0}}, 
+	{BF_ArcMain_Idle0, {  0,   0, 144, 194}, {  0,   0}}, 
+	{BF_ArcMain_Idle1, {  0,   0, 140, 198}, {  0,   0}}, 
+	{BF_ArcMain_Idle2, {  0,   0, 140, 200}, {  0,   0}}, 
+	{BF_ArcMain_Idle3, {  0,   0, 140, 198}, {  0,   0}}, 
 
-	{BF_ArcMain_Left0, {  0,   0,   0,   0}, {  0,   0}}, 
-	{BF_ArcMain_Left1, {  0,   0,   0,   0}, {  0,   0}}, 
-	{BF_ArcMain_Left2, {  0,   0,   0,   0}, {  0,   0}}, 
-	{BF_ArcMain_Left3, {  0,   0,   0,   0}, {  0,   0}}, 
+	{BF_ArcMain_Left0, {  0,   0, 136, 198}, {  0,   0}}, 
+	{BF_ArcMain_Left1, {  0,   0, 140, 198}, {  0,   0}}, 
+	{BF_ArcMain_Left2, {  0,   0, 136, 198}, {  0,   0}}, 
+	{BF_ArcMain_Left3, {  0,   0, 140, 198}, {  0,   0}}, 
 
-	{BF_ArcMain_Down0, {  0,   0,   0,   0}, {  0,   0}}, 
-	{BF_ArcMain_Down1, {  0,   0,   0,   0}, {  0,   0}}, 
-	{BF_ArcMain_Down2, {  0,   0,   0,   0}, {  0,   0}}, 
-	{BF_ArcMain_Down3, {  0,   0,   0,   0}, {  0,   0}}, 
+	{BF_ArcMain_Down0, {  0,   0, 144, 193}, {  0,   0}}, 
+	{BF_ArcMain_Down1, {  0,   0, 144, 196}, {  0,   0}}, 
+	{BF_ArcMain_Down2, {  0,   0, 140, 198}, {  0,   0}}, 
+	{BF_ArcMain_Down3, {  0,   0, 136, 199}, {  0,   0}}, 
 
-	{BF_ArcMain_Up0, {  0,   0,   0,   0}, {  0,   0}}, 
-	{BF_ArcMain_Up1, {  0,   0,   0,   0}, {  0,   0}},
-	{BF_ArcMain_Up2, {  0,   0,   0,   0}, {  0,   0}}, 
-	{BF_ArcMain_Up3, {  0,   0,   0,   0}, {  0,   0}}, 
+	{BF_ArcMain_Up0, {  0,   0, 132, 207}, {  0,   0}}, 
+	{BF_ArcMain_Up1, {  0,   0, 136, 203}, {  0,   0}},
+	{BF_ArcMain_Up2, {  0,   0, 136, 201}, {  0,   0}}, 
+	{BF_ArcMain_Up3, {  0,   0, 136, 199}, {  0,   0}}, 
 
-	{BF_ArcMain_Right0, {  0,   0,   0,   0}, {  0,   0}}, 
-	{BF_ArcMain_Right1, {  0,   0,   0,   0}, {  0,   0}}, 
-	{BF_ArcMain_Right2, {  0,   0,   0,   0}, {  0,   0}}, 
-	{BF_ArcMain_Right3, {  0,   0,   0,   0}, {  0,   0}}, 
+	{BF_ArcMain_Right0, {  0,   0, 140, 198}, {  0,   0}}, 
+	{BF_ArcMain_Right1, {  0,   0, 140, 198}, {  0,   0}}, 
+	{BF_ArcMain_Right2, {  0,   0, 140, 198}, {  0,   0}}, 
+	{BF_ArcMain_Right3, {  0,   0, 140, 198}, {  0,   0}}, 
 	
 	{BF_ArcMain_Dead0, {  0,   0, 128, 128}, { 53,  98}}, //23 dead0 0
 	{BF_ArcMain_Dead0, {128,   0, 128, 128}, { 53,  98}}, //24 dead0 1
