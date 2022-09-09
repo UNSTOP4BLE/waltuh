@@ -12,6 +12,7 @@ all: \
 	iso/bf/main.arc \
 	iso/bf/dead.arc \
 	iso/walt/main.arc \
+	iso/jesse/main.arc \
 	iso/gf/main.arc \
 	iso/gf/speaker.tim \
 	iso/week1/back.arc 
@@ -32,6 +33,10 @@ iso/bf/dead.arc: iso/bf/dead1.tim iso/bf/dead2.tim iso/bf/retry.tim
 
 # Walter 
 iso/walt/main.arc: iso/walt/idle0.tim iso/walt/idle1.tim iso/walt/idle2.tim iso/walt/idle3.tim iso/walt/idle4.tim iso/walt/left0.tim iso/walt/left1.tim iso/walt/left2.tim iso/walt/left3.tim iso/walt/down0.tim iso/walt/down1.tim iso/walt/down2.tim iso/walt/down3.tim iso/walt/up0.tim iso/walt/up1.tim iso/walt/up2.tim iso/walt/up3.tim iso/walt/right0.tim iso/walt/right1.tim iso/walt/right2.tim iso/walt/right3.tim 
+
+# Jesse 
+iso/jesse/main.arc: iso/jesse/idle0.tim iso/jesse/idle1.tim iso/jesse/idle2.tim iso/jesse/idle3.tim  
+
 # GF
 iso/gf/main.arc: iso/gf/gf0.tim iso/gf/gf1.tim iso/gf/gf2.tim
 

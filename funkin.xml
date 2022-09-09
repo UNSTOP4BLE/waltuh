@@ -61,6 +61,9 @@
 				<!-- Walter assets -->
 				<file name = "walt.arc" type = "data" source = "iso/walt/main.arc"/>
 
+				<!-- Jesse assets -->
+				<file name = "jesse.arc" type = "data" source = "iso/jesse/main.arc"/>
+
 				<!-- Girlfriend assets -->
 				<file name = "gf.arc" type = "data" source = "iso/gf/main.arc"/>
 				<file name = "speaker.tim" type = "data" source = "iso/gf/speaker.tim"/>
