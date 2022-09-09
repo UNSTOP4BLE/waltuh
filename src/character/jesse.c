@@ -18,7 +18,6 @@ enum
 	jesse_ArcMain_Idle1,
 	jesse_ArcMain_Idle2,
 	jesse_ArcMain_Idle3,
-	jesse_ArcMain_Idle4,
 	jesse_ArcMain_Left0,
 	jesse_ArcMain_Left1,
 	jesse_ArcMain_Left2,
@@ -35,7 +34,7 @@ enum
 	jesse_ArcMain_Right1,
 	jesse_ArcMain_Right2,
 	jesse_ArcMain_Right3,
-	
+
 	jesse_Arc_Max,
 };
 
@@ -54,42 +53,41 @@ typedef struct
 
 //jesse character definitions
 static const CharFrame char_jesse_frame[] = {
-	{jesse_ArcMain_Idle0, {  0,   0, 172, 194}, {100 - 40, 194}},
-	{jesse_ArcMain_Idle1, {  0,   0, 172, 196}, {100 - 40, 196}},
-	{jesse_ArcMain_Idle2, {  0,   0, 172, 197}, {100 - 40, 197}},
-	{jesse_ArcMain_Idle3, {  0,   0, 168, 195}, { 98 - 40, 195}},
-	{jesse_ArcMain_Idle4, {  0,   0, 172, 195}, { 99 - 40, 194}},
+	{jesse_ArcMain_Idle0, {  0,   0, 148, 203}, {0, 203}},
+	{jesse_ArcMain_Idle1, {  0,   0, 144, 206}, {0, 206}},
+	{jesse_ArcMain_Idle2, {  0,   0, 144, 208}, {0, 208}},
+	{jesse_ArcMain_Idle3, {  0,   0, 140, 209}, {0, 209}},
 
-	{jesse_ArcMain_Left0, {  0,   0, 172, 193}, {100 - 40, 193}},
-	{jesse_ArcMain_Left1, {  0,   0, 172, 194}, {100 - 40, 194}},
-	{jesse_ArcMain_Left2, {  0,   0, 172, 195}, {100 - 40, 195}},
-	{jesse_ArcMain_Left3, {  0,   0, 172, 195}, {100 - 40, 195}},
+	{jesse_ArcMain_Left0, {  0,   0, 140, 211}, {0, 211}},
+	{jesse_ArcMain_Left1, {  0,   0, 140, 209}, {0, 209}}, 
+	{jesse_ArcMain_Left2, {  0,   0, 140, 209}, {0, 209}},
+	{jesse_ArcMain_Left3, {  0,   0, 140, 209}, {1, 209}},
 
-	{jesse_ArcMain_Down0, {  0,   0, 176, 181}, {100 - 40, 181}},
-	{jesse_ArcMain_Down1, {  0,   0, 176, 187}, { 99 - 40, 188}},
-	{jesse_ArcMain_Down2, {  0,   0, 172, 192}, { 98 - 40, 193}},
-	{jesse_ArcMain_Down3, {  0,   0, 168, 195}, { 99 - 40, 195}},
+	{jesse_ArcMain_Down0, {  0,   0, 148, 199}, {0, 199}},
+	{jesse_ArcMain_Down1, {  0,   0, 144, 204}, {0, 204}},
+	{jesse_ArcMain_Down2, {  0,   0, 144, 207}, {0, 207}},
+	{jesse_ArcMain_Down3, {  0,   0, 140, 209}, {0, 209}},
 
-	{jesse_ArcMain_Up0, {  0,   0, 164, 202}, {100 - 40, 202}},
-	{jesse_ArcMain_Up1, {  0,   0, 164, 199}, {102 - 40, 199}},
-	{jesse_ArcMain_Up2, {  0,   0, 168, 197}, {102 - 40, 197}},
-	{jesse_ArcMain_Up3, {  0,   0, 172, 195}, {103 - 40, 195}},
+	{jesse_ArcMain_Up0, {  0,   0, 132, 214}, {0, 214}},
+	{jesse_ArcMain_Up1, {  0,   0, 136, 212}, {0, 212}},
+	{jesse_ArcMain_Up2, {  0,   0, 140, 210}, {0, 210}},
+	{jesse_ArcMain_Up3, {  0,   0, 140, 209}, {0, 209}},
 
-	{jesse_ArcMain_Right0, {  0,   0, 172, 192}, {100 - 40, 192}},
-	{jesse_ArcMain_Right1, {  0,   0, 172, 194}, {100 - 40, 194}},
-	{jesse_ArcMain_Right2, {  0,   0, 172, 195}, {100 - 40, 195}},
-	{jesse_ArcMain_Right3, {  0,   0, 172, 195}, {100 - 40, 195}},
+	{jesse_ArcMain_Right0, {  0,   0, 140, 205}, {0, 205}},
+	{jesse_ArcMain_Right1, {  0,   0, 140, 207}, {0, 207}},
+	{jesse_ArcMain_Right2, {  0,   0, 140, 209}, {0, 209}},
+	{jesse_ArcMain_Right3, {  0,   0, 140, 209}, {0, 209}},
 };
 
 static const Animation char_jesse_anim[CharAnim_Max] = {
 	{2, (const u8[]){0, 1, 2, 3,  ASCR_BACK, 0}}, //CharAnim_Idle
-	{2, (const u8[]){5, 6, 7, 8, ASCR_BACK, 0}},         //CharAnim_Left
+	{2, (const u8[]){4, 5, 6, 7, ASCR_BACK, 0}},         //CharAnim_Left
 	{0, (const u8[]){ASCR_CHGANI, CharAnim_Idle}},   //CharAnim_LeftAlt
-	{2, (const u8[]){9, 10, 11, 12, ASCR_BACK, 0}},         //CharAnim_Down
+	{2, (const u8[]){8, 9, 10, 11, ASCR_BACK, 0}},         //CharAnim_Down
 	{0, (const u8[]){ASCR_CHGANI, CharAnim_Idle}},   //CharAnim_DownAlt
-	{2, (const u8[]){13, 14, 15, 16, ASCR_BACK, 0}},         //CharAnim_Up
+	{2, (const u8[]){12, 13, 14, 15, ASCR_BACK, 0}},         //CharAnim_Up
 	{0, (const u8[]){ASCR_CHGANI, CharAnim_Idle}},   //CharAnim_UpAlt
-	{2, (const u8[]){17, 18, 19, 20, ASCR_BACK, 0}},         //CharAnim_Right
+	{2, (const u8[]){16, 17, 18, 19, ASCR_BACK, 0}},         //CharAnim_Right
 	{0, (const u8[]){ASCR_CHGANI, CharAnim_Idle}},   //CharAnim_RightAlt
 };
 
@@ -175,19 +173,22 @@ Character *Char_jesse_New(fixed_t x, fixed_t y)
 		"idle1.tim", //jesse_ArcMain_Idle1
 		"idle2.tim", //jesse_ArcMain_Idle1
 		"idle3.tim", //jesse_ArcMain_Idle1
-		"idle4.tim", //jesse_ArcMain_Idle1
+
 		"left0.tim",  //jesse_ArcMain_Left
 		"left1.tim",  //jesse_ArcMain_Left
 		"left2.tim",  //jesse_ArcMain_Left
 		"left3.tim",  //jesse_ArcMain_Left
+	
 		"down0.tim",  //jesse_ArcMain_Down
 		"down1.tim",  //jesse_ArcMain_Down
 		"down2.tim",  //jesse_ArcMain_Down
 		"down3.tim",  //jesse_ArcMain_Down
+	
 		"up0.tim",    //jesse_ArcMain_Up
 		"up1.tim",    //jesse_ArcMain_Up
 		"up2.tim",    //jesse_ArcMain_Up
 		"up3.tim",    //jesse_ArcMain_Up
+	
 		"right0.tim", //jesse_ArcMain_Right
 		"right1.tim", //jesse_ArcMain_Right
 		"right2.tim", //jesse_ArcMain_Right

@@ -31,16 +31,27 @@ void Back_Week1_DrawBG(StageBack *back)
 	fx = stage.camera.x * 8/10;
 	fy = stage.camera.y * 8/10;
 	
-	RECT back_src = {0, 0, 255, 255};
+	RECT back_src = {0, 0, 128, 255};
 	RECT_FIXED back_dst = {
-		FIXED_DEC(-288,1) - fx,
+		FIXED_DEC(-244,1) - fx,
 		FIXED_DEC(-141,1) - fy,
-		FIXED_DEC(570,1),
+		FIXED_DEC(295,1),
 		FIXED_DEC(295,1)
 	};
 
 	Debug_StageMoveDebug(&back_dst, 4, fx, fy);
+
+	RECT_FIXED back2_dst = {
+		(back_dst.x + fx) + back_dst.w - fx,
+		back_dst.y,
+		FIXED_DEC(295,1),
+		FIXED_DEC(295,1)
+	};
+
 	Stage_DrawTex(&this->tex_back, &back_src, &back_dst, stage.camera.bzoom);
+	back_src.x = 127;
+	Stage_DrawTex(&this->tex_back, &back_src, &back2_dst, stage.camera.bzoom);
+
 }
 
 void Back_Week1_Free(StageBack *back)

@@ -35,6 +35,16 @@ enum
 	walt_ArcMain_Right1,
 	walt_ArcMain_Right2,
 	walt_ArcMain_Right3,
+
+	walt_ArcMain_S0,
+	walt_ArcMain_S1,
+	walt_ArcMain_S2,
+	walt_ArcMain_S3,
+	walt_ArcMain_S4,
+	walt_ArcMain_S5,
+	walt_ArcMain_S6,
+	walt_ArcMain_S7,
+	walt_ArcMain_S8,
 	
 	walt_Arc_Max,
 };
@@ -79,6 +89,16 @@ static const CharFrame char_walt_frame[] = {
 	{walt_ArcMain_Right1, {  0,   0, 172, 194}, {100 - 40, 194}},
 	{walt_ArcMain_Right2, {  0,   0, 172, 195}, {100 - 40, 195}},
 	{walt_ArcMain_Right3, {  0,   0, 172, 195}, {100 - 40, 195}},
+
+	{walt_ArcMain_S0, {  0,   0, 172, 195}, {100 - 40, 195}},
+	{walt_ArcMain_S1, {  0,   0, 172, 195}, {100 - 40, 195}},
+	{walt_ArcMain_S2, {  0,   0, 172, 195}, {100 - 40, 195}},
+	{walt_ArcMain_S3, {  0,   0, 172, 195}, {100 - 40, 195}},
+	{walt_ArcMain_S4, {  0,   0, 172, 195}, {100 - 40, 195}},
+	{walt_ArcMain_S5, {  0,   0, 168, 195}, {100 - 40, 195}},
+	{walt_ArcMain_S6, {  0,   0, 172, 195}, {100 - 40, 195}},
+	{walt_ArcMain_S7, {  0,   0, 172, 195}, {100 - 40, 195}},
+	{walt_ArcMain_S8, {  0,   0, 172, 195}, {100 - 40, 195}},
 };
 
 static const Animation char_walt_anim[CharAnim_Max] = {
@@ -86,7 +106,7 @@ static const Animation char_walt_anim[CharAnim_Max] = {
 	{2, (const u8[]){5, 6, 7, 8, ASCR_BACK, 0}},         //CharAnim_Left
 	{0, (const u8[]){ASCR_CHGANI, CharAnim_Idle}},   //CharAnim_LeftAlt
 	{2, (const u8[]){9, 10, 11, 12, ASCR_BACK, 0}},         //CharAnim_Down
-	{0, (const u8[]){ASCR_CHGANI, CharAnim_Idle}},   //CharAnim_DownAlt
+	{2, (const u8[]){21, 22, 23, 24, 25, 26, 27, 28, 29, 29, 29, ASCR_BACK, 0}},   //CharAnim_DownAlt
 	{2, (const u8[]){13, 14, 15, 16, ASCR_BACK, 0}},         //CharAnim_Up
 	{0, (const u8[]){ASCR_CHGANI, CharAnim_Idle}},   //CharAnim_UpAlt
 	{2, (const u8[]){17, 18, 19, 20, ASCR_BACK, 0}},         //CharAnim_Right
@@ -116,6 +136,14 @@ void Char_walt_Tick(Character *character)
 	if ((character->pad_held & (INPUT_LEFT | INPUT_DOWN | INPUT_UP | INPUT_RIGHT)) == 0)
 		Character_PerformIdle(character);
 	
+	if (stage.song_step > 574 && stage.song_step < 704)
+		this->character.focus_x = FIXED_DEC((stage.prefs.widescreen ? 130 : 160) + 130,1);
+	else
+		this->character.focus_x = FIXED_DEC((stage.prefs.widescreen ? -32 : -90) - -120,1);
+
+	if (stage.song_step == 566)
+		character->set_anim(character, CharAnim_DownAlt);
+
 	//Animate and draw
 	Animatable_Animate(&character->animatable, (void*)this, Char_walt_SetFrame);
 	Character_Draw(character, &this->tex, &char_walt_frame[this->frame]);
@@ -163,7 +191,8 @@ Character *Char_walt_New(fixed_t x, fixed_t y)
 	//health bar color
 	this->character.health_bar = 0xFFAD63D6;
 	
-	this->character.focus_x = FIXED_DEC(-90 - -120,1);
+	this->character.focus_x = FIXED_DEC((stage.prefs.widescreen ? -32 : -90) - -120,1);
+
 	this->character.focus_y = FIXED_DEC(-14 - 100,1);
 	this->character.focus_zoom = FIXED_DEC(14,10);
 	
@@ -192,6 +221,15 @@ Character *Char_walt_New(fixed_t x, fixed_t y)
 		"right1.tim", //walt_ArcMain_Right
 		"right2.tim", //walt_ArcMain_Right
 		"right3.tim", //walt_ArcMain_Right
+		"s0.tim",
+		"s1.tim",
+		"s2.tim",
+		"s3.tim",
+		"s4.tim",
+		"s5.tim",
+		"s6.tim",
+		"s7.tim",
+		"s8.tim",
 		NULL
 	};
 	IO_Data *arc_ptr = this->arc_ptr;
