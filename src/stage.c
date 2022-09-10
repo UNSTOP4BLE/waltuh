@@ -313,8 +313,6 @@ static void Stage_NoteCheck(PlayerState *this, u8 type)
 	//Perform note check
 	for (Note *note = stage.cur_note;; note++)
 	{
-		if (!(note->type & NOTE_FLAG_MINE))
-		{
 			//Check if note can be hit
 			fixed_t note_fp = (fixed_t)note->pos << FIXED_SHIFT;
 			if (note_fp - stage.early_safe > stage.note_scroll)
@@ -326,9 +324,16 @@ static void Stage_NoteCheck(PlayerState *this, u8 type)
 			
 			//Hit the note
 			note->type |= NOTE_FLAG_HIT;
-			stage.oppo2sing = "none";
 
-			if (stage.opponent->animatable.anim != CharAnim_DownAlt)
+			if ((this->character == stage.opponent) || (this->character == stage.opponent2))
+			{
+				if (note->type & (NOTE_FLAG_MINE))
+					stage.oppo2sing = "single";
+				else
+					stage.oppo2sing = "none";
+			}
+
+			if (this->character->animatable.anim != CharAnim_DownAlt)
 	       		this->character->set_anim(this->character, note_anims[type & 0x3][(note->type & NOTE_FLAG_ALT_ANIM) != 0]);
 
 			u8 hit_type = Stage_HitNote(this, type, stage.note_scroll - note_fp);
@@ -336,33 +341,6 @@ static void Stage_NoteCheck(PlayerState *this, u8 type)
 			(void)hit_type;
 			return;
 		}
-		else
-		{
-			//Check if mine can be hit
-			fixed_t note_fp = (fixed_t)note->pos << FIXED_SHIFT;
-			if (note_fp - (stage.late_safe * 3 / 5) > stage.note_scroll)
-				break;
-			if (note_fp + (stage.late_safe * 2 / 5) < stage.note_scroll)
-				continue;
-			if ((note->type & NOTE_FLAG_HIT) || (note->type & (NOTE_FLAG_OPPONENT | 0x3)) != type || (note->type & NOTE_FLAG_SUSTAIN))
-				continue;
-			
-			//Hit the mine
-			note->type |= NOTE_FLAG_HIT;
-			
-			stage.oppo2sing = "single";
-
-			this->health -= 2000;
-
-			if (this->character->spec & CHAR_SPEC_MISSANIM)
-				this->character->set_anim(this->character, note_anims[type & 0x3][2]);
-			else
-				this->character->set_anim(this->character, note_anims[type & 0x3][0]);
-			this->arrow_hitan[type & 0x3] = -1;
-			
-			return;
-		}
-	}
 	
 	//Missed a note
 	this->arrow_hitan[type & 0x3] = -1;
@@ -402,7 +380,7 @@ static void Stage_SustainCheck(PlayerState *this, u8 type)
 		//Hit the note
 		note->type |= NOTE_FLAG_HIT;
 		
-		if (stage.opponent->animatable.anim != CharAnim_DownAlt)
+		if (this->character->animatable.anim != CharAnim_DownAlt)
 			this->character->set_anim(this->character, note_anims[type & 0x3][(note->type & NOTE_FLAG_ALT_ANIM) != 0]);
 		
 		Stage_StartVocal();
@@ -984,7 +962,7 @@ static void Stage_DrawNotes(void)
 				continue;
 			
 			//Miss note if player's note
-			if (!((note->type ^ stage.note_swap) & (bot | NOTE_FLAG_HIT | NOTE_FLAG_MINE)))
+			if (!((note->type ^ stage.note_swap) & (bot | NOTE_FLAG_HIT)))
 			{
 				if (stage.mode < StageMode_Net1 || i == ((stage.mode == StageMode_Net1) ? 0 : 1))
 				{
@@ -2135,12 +2113,13 @@ void Stage_Tick(void)
 								opponent_anote = note_anims[note->type & 0x3][(note->type & NOTE_FLAG_ALT_ANIM) != 0];
 							note->type |= NOTE_FLAG_HIT;
 
-							if (note->type & NOTE_FLAG_MINE)
-								stage.oppo2sing = "single";
-							else
-								stage.oppo2sing = "none";
-
-
+							if ((stage.player_state[1].character == stage.opponent) || (stage.player_state[1].character == stage.opponent2))
+							{
+								if (note->type & (NOTE_FLAG_MINE))
+									stage.oppo2sing = "single";
+								else
+									stage.oppo2sing = "none";
+							}
 						}
 					}
 					
