@@ -1436,7 +1436,7 @@ void Stage_Load(StageId id, StageDiff difficulty, boolean story)
 	FontData_Load(&stage.font_cdr, Font_CDR);
 
 	//Load characters
-	if (stage.stage_id == StageId_1_1)
+	if (stage.stage_id == StageId_1_1 || stage.stage_id == StageId_1_2)
 		stage.scalegfdown = true;
 	else
 		stage.scalegfdown = false;
@@ -1797,6 +1797,10 @@ void Stage_Tick(void)
 						break;
 					}
 				break;
+				case StageId_1_2:
+					if (stage.song_step == 80)
+						stage.speed = FIXED_DEC(20,1); //scroll speed 20
+				break; 
 				default: break;
 			}
 			if (stage.prefs.songtimer)
