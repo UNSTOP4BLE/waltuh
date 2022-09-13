@@ -64,7 +64,19 @@ enum
 	BF_ArcMain_Right2,
 	BF_ArcMain_Right3,
 
-	BF_ArcMain_Dead0, //BREAK
+	BF_ArcMain_Leftm0,
+	BF_ArcMain_Leftm1,
+
+	BF_ArcMain_Downm0,
+	BF_ArcMain_Downm1,
+	
+	BF_ArcMain_Upm0,
+	BF_ArcMain_Upm1,
+
+	BF_ArcMain_Rightm0,
+	BF_ArcMain_Rightm1,
+	
+	BF_ArcMain_Dead0, //break
 	
 	BF_ArcMain_Max,
 };
@@ -126,6 +138,18 @@ static const CharFrame char_bf_frame[] = {
 	{BF_ArcMain_Right2, {  0,   0, 140, 198}, {  0, 198}}, 
 	{BF_ArcMain_Right3, {  0,   0, 140, 198}, {  0, 198}}, 
 	
+	{BF_ArcMain_Leftm0, {  0,   0, 140, 198}, {  0, 198}}, 
+	{BF_ArcMain_Leftm1, {  0,   0, 140, 198}, {  0, 198}}, 
+
+	{BF_ArcMain_Downm0, {  0,   0, 140, 199}, {  0, 199}}, 
+	{BF_ArcMain_Downm1, {  0,   0, 140, 196}, {  0, 196}}, 
+
+	{BF_ArcMain_Upm0, {  0,   0, 140, 199}, {  0, 199}}, 
+	{BF_ArcMain_Upm1, {  0,   0, 132, 203}, {  0, 203}},
+
+	{BF_ArcMain_Rightm0, {  0,   0, 140, 198}, {  0, 198}}, 
+	{BF_ArcMain_Rightm1, {  0,   0, 140, 199}, {  0, 199}}, 
+	
 	{BF_ArcMain_Dead0, {  0,   0, 128, 128}, { 53,  98}}, //23 dead0 0
 	{BF_ArcMain_Dead0, {128,   0, 128, 128}, { 53,  98}}, //24 dead0 1
 	{BF_ArcMain_Dead0, {  0, 128, 128, 128}, { 53,  98}}, //25 dead0 2
@@ -153,10 +177,10 @@ static const Animation char_bf_anim[PlayerAnim_Max] = {
 	{2, (const u8[]){16, 17, 18, 19, ASCR_BACK, 0}},             //CharAnim_Right
 	{0, (const u8[]){ASCR_CHGANI, CharAnim_Idle}},       //CharAnim_RightAlt
 	
-	{1, (const u8[]){ 5, 20, 20, 21, ASCR_BACK, 1}},     //PlayerAnim_LeftMiss
-	{1, (const u8[]){ 7, 22, 22, 23, ASCR_BACK, 1}},     //PlayerAnim_DownMiss
-	{1, (const u8[]){ 9, 24, 24, 25, ASCR_BACK, 1}},     //PlayerAnim_UpMiss
-	{1, (const u8[]){11, 26, 26, 27, ASCR_BACK, 1}},     //PlayerAnim_RightMiss
+	{1, (const u8[]){ 4, 20, 20, 21, ASCR_BACK, 1}},     //PlayerAnim_LeftMiss
+	{1, (const u8[]){ 8, 22, 22, 23, ASCR_BACK, 1}},     //PlayerAnim_DownMiss
+	{1, (const u8[]){12, 24, 24, 25, ASCR_BACK, 1}},     //PlayerAnim_UpMiss
+	{1, (const u8[]){16, 26, 26, 27, ASCR_BACK, 1}},     //PlayerAnim_RightMiss
 	
 	{2, (const u8[]){13, 14, 15, ASCR_BACK, 1}},         //PlayerAnim_Peace
 	{2, (const u8[]){16, 17, 18, 19, ASCR_REPEAT}},      //PlayerAnim_Sweat
@@ -450,7 +474,19 @@ Character *Char_BF_New(fixed_t x, fixed_t y)
 			"right1.tim",
 			"right2.tim",
 			"right3.tim",
-
+			
+			"leftm0.tim",
+			"leftm1.tim",
+			
+			"downm0.tim",
+			"downm1.tim",
+			
+			"upm0.tim",
+			"upm1.tim",
+			
+			"rightm0.tim",
+			"rightm1.tim",
+			
 			"dead0.tim", //BF_ArcMain_Dead0
 			NULL
 		};

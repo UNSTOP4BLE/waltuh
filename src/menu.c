@@ -623,7 +623,7 @@ void Menu_Tick(void)
 				const char *tracks[3];
 				int length;
 			} menu_options[] = {
-				{"1", StageId_1_1, "DADDY DEAREST", {"BOPEEBO", "FRESH", "DADBATTLE"}, 3},
+				{"1", StageId_1_1, "JESSE WE NEED TO RAP", {"COOKING", NULL, NULL}, 1},
 			};
 	
 			//Draw week name and tracks
@@ -655,7 +655,7 @@ void Menu_Tick(void)
 			}
 			
 			//Draw difficulty selector
-			Menu_DifficultySelector(screen.SCREEN_WIDTH - 75, 80);
+			Menu_DifficultySelector(screen.SCREEN_WIDTH - 100, screen.SCREEN_HEIGHT2 - 48);
 			
 			//Handle option and selection
 			if (menu.trans_time > 0 && (menu.trans_time -= timer_dt) <= 0)
@@ -728,8 +728,11 @@ void Menu_Tick(void)
 			}
 			
 			//Draw upper strip
-			RECT name_bar = {0, 16, screen.SCREEN_WIDTH, 32};
-			Gfx_DrawRect(&name_bar, 249, 207, 81);
+			RECT bg_src = {79, 31, 140, 42};
+			RECT bg_dst = {0, 16, screen.SCREEN_WIDTH, 112};
+
+			Gfx_DrawTex(&menu.tex_story, &bg_src, &bg_dst);
+
 			
 			//Draw options
 			s32 next_scroll = menu.select * FIXED_DEC(48,1);
