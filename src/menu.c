@@ -708,13 +708,17 @@ void Menu_Tick(void)
 			}
 			
 			//Draw week name and tracks
-			menu.font_bold.draw(&menu.font_bold,
+			menu.font_arial.draw(&menu.font_arial,
 				menu_options[menu.select].name,
 				screen.SCREEN_WIDTH - 16,
 				24,
 				FontAlign_Right
 			);
-			
+
+
+			RECT Tracks = {51,  2,  50, 10};
+			Gfx_BlitTex(&menu.tex_names,&Tracks, 20, 147+40);
+
 			const char * const *trackp = menu_options[menu.select].tracks;
 			for (size_t i = 0; i < COUNT_OF(menu_options[menu.select].tracks); i++, trackp++)
 			{
