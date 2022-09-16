@@ -711,23 +711,30 @@ void Menu_Tick(void)
 			menu.font_arial.draw(&menu.font_arial,
 				menu_options[menu.select].name,
 				screen.SCREEN_WIDTH - 16,
-				24,
+				7,
 				FontAlign_Right
 			);
 
 
-			RECT Tracks = {51,  2,  50, 10};
-			Gfx_BlitTex(&menu.tex_names,&Tracks, 20, 147+40);
-
 			const char * const *trackp = menu_options[menu.select].tracks;
 			for (size_t i = 0; i < COUNT_OF(menu_options[menu.select].tracks); i++, trackp++)
 			{
+			
+				RECT tracks_src = {204, 116, 52, 12};
+				RECT tracks_dst = {32, 126, 52, 12};
+
+				Gfx_DrawTex(&menu.tex_story, &tracks_src, &tracks_dst);
+
+				
 				if (*trackp != NULL)
-					menu.font_bold.draw(&menu.font_bold,
+					menu.font_arial.draw_col(&menu.font_arial,
 						*trackp,
-						screen.SCREEN_WIDTH - 16,
+						62,
 						screen.SCREEN_HEIGHT - (4 * 24) + (i * 24),
-						FontAlign_Right
+						FontAlign_Center,
+						209 >> 1,
+						87  >> 1,
+						119 >> 1
 					);
 			}
 			
@@ -747,18 +754,18 @@ void Menu_Tick(void)
 				//Draw all options
 				for (u8 i = 0; i < COUNT_OF(menu_options); i++)
 				{
-					s32 y = 64 + (i * 48) - (menu.scroll >> FIXED_SHIFT);
+					s32 y = 128 + (i * 48) - (menu.scroll >> FIXED_SHIFT);
 					if (y <= 16)
 						continue;
 					if (y >= screen.SCREEN_HEIGHT)
 						break;
-					Menu_DrawWeek(menu_options[i].week, 48, y);
+					Menu_DrawWeek(menu_options[i].week, 120, y);
 				}
 			}
 			else if (animf_count & 2)
 			{
 				//Draw selected option
-				Menu_DrawWeek(menu_options[menu.select].week, 48, 64 + (menu.select * 48) - (menu.scroll >> FIXED_SHIFT));
+				Menu_DrawWeek(menu_options[menu.select].week, 120, 128 + (menu.select * 48) - (menu.scroll >> FIXED_SHIFT));
 			}
 			
 			break;
