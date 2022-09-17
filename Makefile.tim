@@ -9,8 +9,8 @@ all: \
 	iso/stage/hud1-1.tim \
 	iso/stage/hud0weeb.tim \
 	iso/stage/pause.tim \
+	iso/stage/dead0.tim \
 	iso/bf/main.arc \
-	iso/bf/dead.arc \
 	iso/walt/main.arc \
 	iso/jesse/main.arc \
 	iso/gf/main.arc \
@@ -27,14 +27,10 @@ iso/%.arc:
 iso/menu/menu.arc: iso/menu/back.tim iso/menu/ng.tim iso/menu/story.tim iso/menu/title.tim
 
 # BF
-iso/bf/main.arc: iso/bf/idle0.tim iso/bf/idle1.tim iso/bf/idle2.tim iso/bf/idle3.tim iso/bf/left0.tim iso/bf/left1.tim iso/bf/left2.tim iso/bf/left3.tim iso/bf/down0.tim iso/bf/down1.tim iso/bf/down2.tim iso/bf/down3.tim iso/bf/up0.tim iso/bf/up1.tim iso/bf/up2.tim iso/bf/up3.tim iso/bf/right0.tim iso/bf/right1.tim iso/bf/right2.tim iso/bf/right3.tim iso/bf/dead0.tim iso/bf/leftm0.tim iso/bf/leftm1.tim iso/bf/downm0.tim iso/bf/downm1.tim iso/bf/upm0.tim iso/bf/upm1.tim iso/bf/rightm0.tim iso/bf/rightm1.tim
-
-
-iso/bf/dead.arc: iso/bf/dead1.tim iso/bf/dead2.tim iso/bf/retry.tim
+iso/bf/main.arc: iso/bf/idle0.tim iso/bf/idle1.tim iso/bf/idle2.tim iso/bf/idle3.tim iso/bf/left0.tim iso/bf/left1.tim iso/bf/left2.tim iso/bf/left3.tim iso/bf/down0.tim iso/bf/down1.tim iso/bf/down2.tim iso/bf/down3.tim iso/bf/up0.tim iso/bf/up1.tim iso/bf/up2.tim iso/bf/up3.tim iso/bf/right0.tim iso/bf/right1.tim iso/bf/right2.tim iso/bf/right3.tim iso/bf/leftm0.tim iso/bf/leftm1.tim iso/bf/downm0.tim iso/bf/downm1.tim iso/bf/upm0.tim iso/bf/upm1.tim iso/bf/rightm0.tim iso/bf/rightm1.tim 
 
 # Walter 
 iso/walt/main.arc: iso/walt/idle0.tim iso/walt/idle1.tim iso/walt/idle2.tim iso/walt/idle3.tim iso/walt/idle4.tim iso/walt/left0.tim iso/walt/left1.tim iso/walt/left2.tim iso/walt/left3.tim iso/walt/down0.tim iso/walt/down1.tim iso/walt/down2.tim iso/walt/down3.tim iso/walt/up0.tim iso/walt/up1.tim iso/walt/up2.tim iso/walt/up3.tim iso/walt/right0.tim iso/walt/right1.tim iso/walt/right2.tim iso/walt/right3.tim iso/walt/s0.tim iso/walt/s1.tim iso/walt/s2.tim iso/walt/s3.tim iso/walt/s4.tim iso/walt/s5.tim iso/walt/s6.tim iso/walt/s7.tim iso/walt/s8.tim
-
 
 # Jesse 
 iso/jesse/main.arc: iso/jesse/idle0.tim iso/jesse/idle1.tim iso/jesse/idle2.tim iso/jesse/idle3.tim iso/jesse/left0.tim iso/jesse/left1.tim iso/jesse/left2.tim iso/jesse/left3.tim iso/jesse/down0.tim iso/jesse/down1.tim iso/jesse/down2.tim iso/jesse/down3.tim iso/jesse/up0.tim iso/jesse/up1.tim iso/jesse/up2.tim iso/jesse/up3.tim iso/jesse/right0.tim iso/jesse/right1.tim iso/jesse/right2.tim iso/jesse/right3.tim

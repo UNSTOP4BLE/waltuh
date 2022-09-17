@@ -9,7 +9,7 @@ typedef struct
 static const XA_TrackDef xa_tracks[] = {
 	//MENU.XA
 	{XA_Menu, XA_LENGTH(11300)}, //XA_GettinFreaky
-	{XA_Menu, XA_LENGTH(3800)},  //XA_GameOver
+	{XA_Menu, XA_LENGTH(5500)},  //XA_GameOver
 	//WEEK1A.XA
 	{XA_Week1A, XA_LENGTH(12800)}, //XA_Bopeebo
 	{XA_Week1A, XA_LENGTH(1800)}, //XA_Fresh

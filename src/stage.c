@@ -2278,7 +2278,7 @@ void Stage_Tick(void)
 
 			break;
 		}
-		case StageState_Dead: //Start BREAK animation and reading extra data from CD
+	    case StageState_Dead: //Start BREAK animation and reading extra data from CD
 		{
 			//Stop music immediately
 			Audio_StopXA();
@@ -2310,62 +2310,19 @@ void Stage_Tick(void)
 			//Change background colour to black
 			Gfx_SetClear(0, 0, 0);
 			
-			//Run death animation, focus on player, and change state
-			stage.player->set_anim(stage.player, PlayerAnim_Dead0);
-			
-			Stage_FocusCharacter(stage.player, 0);
 			stage.song_time = 0;
 			
+			Gfx_LoadTex(&stage.tex_ded, IO_Read("\\STAGE\\DEAD0.TIM;1"), GFX_LOADTEX_FREE);
+		
+			Audio_PlayXA_Track(XA_GameOver, 0x40, 1, true);	
 			stage.state = StageState_DeadLoad;
 		}
 	//Fallthrough
 		case StageState_DeadLoad:
 		{
-			//Scroll camera and tick player
-			if (stage.song_time < FIXED_UNIT)
-				stage.song_time += FIXED_UNIT / 60;
-			stage.camera.td = FIXED_DEC(-2, 100) + FIXED_MUL(stage.song_time, FIXED_DEC(45, 1000));
-			if (stage.camera.td > 0)
-				Stage_ScrollCamera();
-			stage.player->tick(stage.player);
-			
-			//Drop mic and change state if CD has finished reading and animation has ended
-			if (IO_IsReading() || stage.player->animatable.anim != PlayerAnim_Dead1)
-				break;
-			
-			stage.player->set_anim(stage.player, PlayerAnim_Dead2);
-			stage.camera.td = FIXED_DEC(25, 1000);
-			stage.state = StageState_DeadDrop;
-			break;
-		}
-		case StageState_DeadDrop:
-		{
-			//Scroll camera and tick player
-			Stage_ScrollCamera();
-			stage.player->tick(stage.player);
-			
-			//Enter next state once mic has been dropped
-			if (stage.player->animatable.anim == PlayerAnim_Dead3)
-			{
-				stage.state = StageState_DeadRetry;
-				Audio_PlayXA_Track(XA_GameOver, 0x40, 1, true);
-			}
-			break;
-		}
-		case StageState_DeadRetry:
-		{
-			//Randomly twitch
-			if (stage.player->animatable.anim == PlayerAnim_Dead3)
-			{
-				if (RandomRange(0, 29) == 0)
-					stage.player->set_anim(stage.player, PlayerAnim_Dead4);
-				if (RandomRange(0, 29) == 0)
-					stage.player->set_anim(stage.player, PlayerAnim_Dead5);
-			}
-			
-			//Scroll camera and tick player
-			Stage_ScrollCamera();
-			stage.player->tick(stage.player);
+			RECT src = {0, 0, 255, 255};
+			RECT dst = {0, 0, screen.SCREEN_WIDTH, screen.SCREEN_HEIGHT};
+			Gfx_DrawTex(&stage.tex_ded, &src, &dst);
 			break;
 		}
 		default:
