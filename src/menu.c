@@ -215,7 +215,7 @@ static void Menu_DrawWeek(const char *week, s32 x, s32 y)
 	else
 	{
 		//Week
-		RECT label_src = {0, 32, 80, 32};
+		RECT label_src = {0, 32, 72, 32};
 		Gfx_BlitTex(&menu.tex_story, &label_src, x, y);
 		
 		//Number
@@ -225,7 +225,7 @@ static void Menu_DrawWeek(const char *week, s32 x, s32 y)
 			//Draw number
 			u8 i = *week - '0';
 			
-			RECT num_src = {128 + ((i & 3) << 5), ((i >> 2) << 5), 32, 32};
+			RECT num_src = {128 + ((i & 3) << 5), ((i >> 2) << 5), 32, 30};
 			Gfx_BlitTex(&menu.tex_story, &num_src, x, y);
 			x += 32;
 		}
@@ -655,7 +655,7 @@ void Menu_Tick(void)
 			}
 			
 			//Draw difficulty selector
-			Menu_DifficultySelector(screen.SCREEN_WIDTH - 100, screen.SCREEN_HEIGHT2 - 48);
+			Menu_DifficultySelector(screen.SCREEN_WIDTH - 55, screen.SCREEN_HEIGHT2 + 20);
 			
 			//Handle option and selection
 			if (menu.trans_time > 0 && (menu.trans_time -= timer_dt) <= 0)
@@ -667,7 +667,7 @@ void Menu_Tick(void)
 				if (pad_state.press & PAD_UP)
 				{
 					//play scroll sound
-                    Audio_PlaySound(Sounds[0], 0x3fff);
+                    //Audio_PlaySound(Sounds[0], 0x3fff);
 					if (menu.select > 0)
 						menu.select--;
 					else
@@ -676,7 +676,7 @@ void Menu_Tick(void)
 				if (pad_state.press & PAD_DOWN)
 				{
 					//play scroll sound
-                    Audio_PlaySound(Sounds[0], 0x3fff);
+                  //  Audio_PlaySound(Sounds[0], 0x3fff);
 					if (menu.select < COUNT_OF(menu_options) - 1)
 						menu.select++;
 					else
@@ -710,7 +710,7 @@ void Menu_Tick(void)
 			//Draw week name and tracks
 			menu.font_arial.draw(&menu.font_arial,
 				menu_options[menu.select].name,
-				screen.SCREEN_WIDTH - 16,
+				screen.SCREEN_WIDTH,
 				7,
 				FontAlign_Right
 			);
@@ -720,7 +720,7 @@ void Menu_Tick(void)
 			for (size_t i = 0; i < COUNT_OF(menu_options[menu.select].tracks); i++, trackp++)
 			{
 			
-				RECT tracks_src = {204, 116, 52, 12};
+				RECT tracks_src = {161, 116, 52, 12};
 				RECT tracks_dst = {32, 126, 52, 12};
 
 				Gfx_DrawTex(&menu.tex_story, &tracks_src, &tracks_dst);
@@ -740,7 +740,7 @@ void Menu_Tick(void)
 			
 			//Draw upper strip
 			RECT bg_src = {79, 31, 140, 42};
-			RECT bg_dst = {0, 16, screen.SCREEN_WIDTH, 112};
+			RECT bg_dst = {0, 16, screen.SCREEN_WIDTH,  100};
 
 			Gfx_DrawTex(&menu.tex_story, &bg_src, &bg_dst);
 
@@ -759,13 +759,13 @@ void Menu_Tick(void)
 						continue;
 					if (y >= screen.SCREEN_HEIGHT)
 						break;
-					Menu_DrawWeek(menu_options[i].week, 120, y);
+					Menu_DrawWeek(menu_options[i].week, 100, y);
 				}
 			}
 			else if (animf_count & 2)
 			{
 				//Draw selected option
-				Menu_DrawWeek(menu_options[menu.select].week, 120, 128 + (menu.select * 48) - (menu.scroll >> FIXED_SHIFT));
+				Menu_DrawWeek(menu_options[menu.select].week, 100, 128 + (menu.select * 48) - (menu.scroll >> FIXED_SHIFT));
 			}
 			
 			break;
@@ -778,18 +778,18 @@ void Menu_Tick(void)
 				u32 col;
 				const char *text;
 			} menu_options[] = {
-				{StageId_1_1, 0xFF9271FD, "COOKING"},
-				{StageId_1_2, 0xFF9271FD, "GUMMY BEAR"},
+				{StageId_1_1, 0x298952, "COOKING"},
+				{StageId_1_2, 0x298952, "GUMMY BEAR"},
 			};
 
+			sprintf(scoredisp, "PERSONAL BEST: %d", (stage.prefs.savescore[menu_options[menu.select].stage][menu.page_param.stage.diff] > 0) ? stage.prefs.savescore[menu_options[menu.select].stage][menu.page_param.stage.diff] * 10 : 0);
+		
 			menu.font_arial.draw(&menu.font_arial,
 				scoredisp,
-				150,
+				screen.SCREEN_WIDTH - 170,
 				screen.SCREEN_HEIGHT / 2 - 75,
 				FontAlign_Left
 			);
-
-			sprintf(scoredisp, "PERSONAL BEST: %d", (stage.prefs.savescore[menu_options[menu.select].stage][menu.page_param.stage.diff] > 0) ? stage.prefs.savescore[menu_options[menu.select].stage][menu.page_param.stage.diff] * 10 : 0);
 
 			//Initialize page
 			if (menu.page_swap)
