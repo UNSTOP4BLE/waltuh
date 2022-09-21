@@ -189,7 +189,7 @@ Character *Char_walt_New(fixed_t x, fixed_t y)
 	this->character.health_i = 1;
 
 	//health bar color
-	this->character.health_bar = 0xFFAD63D6;
+	this->character.health_bar = 0x003300;
 	
 	this->character.focus_x = FIXED_DEC((stage.prefs.widescreen ? -32 : -90) - -120,1);
 
