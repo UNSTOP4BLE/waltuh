@@ -392,7 +392,7 @@ static void Stage_SustainCheck(PlayerState *this, u8 type)
 
 static void CheckNewScore()
 {
-	if (stage.mode == StageMode_Normal && !stage.prefs.botplay && timer.timermin == 0 && timer.timer <= 5)
+	if (stage.mode == StageMode_Normal && !stage.prefs.botplay)
 	{
 		if (stage.player_state[0].score >= stage.prefs.savescore[stage.stage_id][stage.stage_diff])
 			stage.prefs.savescore[stage.stage_id][stage.stage_diff] = stage.player_state[0].score;			
@@ -1610,8 +1610,6 @@ void Stage_Tick(void)
 		switch (stage.trans)
 		{
 			case StageTrans_Menu:
-				CheckNewScore();
-				writeSaveFile();
 				//Load appropriate menu
 				Stage_Unload();
 				
@@ -1942,6 +1940,8 @@ void Stage_Tick(void)
 				}
 				else
 				{
+					CheckNewScore();
+				    writeSaveFile();
 					stage.trans = StageTrans_Menu;
 					Trans_Start();
 				}
